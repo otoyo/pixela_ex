@@ -15,7 +15,7 @@ defmodule PixelaEx.Mixfile do
   # Type "mix help compile.app" for more information
   def application do
     # Specify extra applications you'll use from Erlang/Elixir
-    [extra_applications: [:logger]]
+    [extra_applications: [:httpotion, :logger]]
   end
 
   # Dependencies can be Hex packages:
@@ -28,6 +28,9 @@ defmodule PixelaEx.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    []
+    [
+      {:httpotion, "~> 3.1.0"},
+      {:mock, "~> 0.3.0", only: :test}
+    ]
   end
 end
