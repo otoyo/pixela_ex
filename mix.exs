@@ -30,7 +30,8 @@ defmodule PixelaEx.Mixfile do
   defp deps do
     [
       {:httpotion, "~> 3.1.0"},
-      {:mock, "~> 0.3.0", only: :test}
+      {:mock, "~> 0.3.0", only: :test},
+      {:poison, "~> 3.1"}
     ]
   end
 end
