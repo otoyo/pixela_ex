@@ -29,7 +29,7 @@ defmodule PixelaEx.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [
-      {:httpotion, "~> 3.1.0"},
+      {:httpotion, git: "https://github.com/otoyo/httpotion", branch: "fix-ibrowse4.4.0"},
       {:mock, "~> 0.3.0", only: :test},
       {:poison, "~> 3.1"}
     ]

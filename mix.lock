@@ -1,7 +1,5 @@
-%{
-  "httpotion": {:hex, :httpotion, "3.1.0", "14d20d9b0ce4e86e253eb91e4af79e469ad949f57a5d23c0a51b2f86559f6589", [:mix], [{:ibrowse, "~> 4.4", [hex: :ibrowse, repo: "hexpm", optional: false]}], "hexpm"},
-  "ibrowse": {:hex, :ibrowse, "4.4.1", "2b7d0637b0f8b9b4182de4bd0f2e826a4da2c9b04898b6e15659ba921a8d6ec2", [:rebar3], [], "hexpm"},
+%{"httpotion": {:git, "https://github.com/otoyo/httpotion", "6e2dd4d61b008c13de27805ad07a9486c5c761fc", [branch: "fix-ibrowse4.4.0"]},
+  "ibrowse": {:hex, :ibrowse, "4.4.0", "2d923325efe0d2cb09b9c6a047b2835a5eda69d8a47ed6ff8bc03628b764e991", [:rebar3], [], "hexpm"},
   "meck": {:hex, :meck, "0.8.12", "1f7b1a9f5d12c511848fec26bbefd09a21e1432eadb8982d9a8aceb9891a3cf2", [:rebar3], [], "hexpm"},
   "mock": {:hex, :mock, "0.3.2", "e98e998fd76c191c7e1a9557c8617912c53df3d4a6132f561eb762b699ef59fa", [:mix], [{:meck, "~> 0.8.8", [hex: :meck, repo: "hexpm", optional: false]}], "hexpm"},
-  "poison": {:hex, :poison, "3.1.0", "d9eb636610e096f86f25d9a46f35a9facac35609a7591b3be3326e99a0484665", [:mix], [], "hexpm"},
-}
+  "poison": {:hex, :poison, "3.1.0", "d9eb636610e096f86f25d9a46f35a9facac35609a7591b3be3326e99a0484665", [:mix], [], "hexpm"}}
