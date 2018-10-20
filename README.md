@@ -1,11 +1,12 @@
-# PixelaEx
+[![CircleCI](https://circleci.com/gh/otoyo/pixela_ex/tree/master.svg?style=svg)](https://circleci.com/gh/otoyo/pixela_ex/tree/master)
 
-**TODO: Add description**
+# pixela\_ex
+
+[Pixela](https://pixe.la/) API client for Elixir
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `pixela_ex` to your list of dependencies in `mix.exs`:
+pixela\_ex can be installed by adding `pixela_ex` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
@@ -13,7 +14,36 @@ def deps do
 end
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/pixela_ex](https://hexdocs.pm/pixela_ex).
+## Usage
 
+Some basic examples:
+
+```elixir
+iex> PixelaEx.create_user(%{username: "a-know", token: "thisissecret", agree_terms_of_service: true, not_minor: true})
+%HTTPotion.Response{body: %{"isSuccess" => true, "message" => "Success."},
+ headers: %HTTPotion.Headers{hdrs: %{...}},
+ status_code: 200}
+
+iex> PixelaEx.create_graph("a-know", "thisissecret", %{graph_id: "test-graph", name: "graph-name", unit: "commit", type: "int", color: "shibafu"})
+%HTTPotion.Response{body: %{"isSuccess" => true, "message" => "Success."},
+ headers: %HTTPotion.Headers{hdrs:...}},
+ status_code: 200}
+
+iex> PixelaEx.create_pixel("a-know", "thisissecret", "test-graph", %{date: "20181020", quantity: "5"})
+%HTTPotion.Response{body: %{"isSuccess" => true, "message" => "Success."},
+ headers: %HTTPotion.Headers{hdrs: %{...}},
+ status_code: 200}
+
+iex> PixelaEx.increment_pixel("a-know", "thisissecret", "test-graph")
+%HTTPotion.Response{body: %{"isSuccess" => true, "message" => "Success."},
+ headers: %HTTPotion.Headers{hdrs: %{...}},
+ status_code: 200}
+```
+
+## Documetation
+
+See [https://hexdocs.pm/pixela_ex](https://hexdocs.pm/pixela_ex) .
+
+## Contributing
+
+Contributions are welcome ;)
