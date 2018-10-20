@@ -42,7 +42,7 @@ iex> PixelaEx.increment_pixel("a-know", "thisissecret", "test-graph")
 
 ## Documetation
 
-See [https://hexdocs.pm/pixela_ex](https://hexdocs.pm/pixela_ex) .
+Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc) .
 
 ## Contributing
 
