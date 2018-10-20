@@ -17,6 +17,9 @@ jobs:
     steps:
       - checkout
 
+      - run: mix local.hex --force  # install Hex locally (without prompt)
+      - run: mix local.rebar --force  # fetch a copy of rebar (without prompt)
+
       # specify any bash command here prefixed with `run: `
       - run: mix deps.get
       - run: mix test
