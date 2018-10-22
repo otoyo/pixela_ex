@@ -15,13 +15,13 @@ defmodule PixelaEx.Client.GraphFunctions do
           %{"message" => "Success.", "isSuccess" => true}
 
       """
-      @spec create_graph(username, token, %{required(:graph_id) => graph_id, required(:name) => name, required(:unit) => unit, required(:color) => color}) :: http_result
-      def create_graph(username, token, %{graph_id: graph_id, name: name, unit: unit, type: type, color: color}) do
+      @spec create_graph(username, token, %{required(:graph_id) => graph_id, required(:name) => name, required(:unit) => unit, required(:type) => quantity_type, required(:color) => color}) :: http_result
+      def create_graph(username, token, %{graph_id: graph_id, name: name, unit: unit, type: quantity_type, color: color}) do
         body = %{
           id:     graph_id,
           name:   name,
           unit:   unit,
-          type:   type,
+          type:   quantity_type,
           color:  color
         }
 

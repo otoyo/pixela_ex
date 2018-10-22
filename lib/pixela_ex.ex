@@ -33,7 +33,7 @@ defmodule PixelaEx do
   @type unit :: String.t
 
   @typedoc "The type of quantity to be handled in the graph. Only `int` or `float` are supported."
-  @type type :: String.t
+  @type quantity_type :: String.t
 
   @typedoc "The behavior when the Webhook is invoked. Only `increment` or `decrement` are supported."
   @type countup_type :: String.t
