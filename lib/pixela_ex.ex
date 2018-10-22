@@ -6,6 +6,7 @@ defmodule PixelaEx do
   use PixelaEx.Client.UserFunctions
   use PixelaEx.Client.GraphFunctions
   use PixelaEx.Client.PixelFunctions
+  use PixelaEx.Client.WebhookFunctions
 
   @typedoc "User name for Pixela"
   @type username :: String.t
@@ -34,6 +35,9 @@ defmodule PixelaEx do
   @typedoc "The type of quantity to be handled in the graph. Only `int` or `float` are supported."
   @type type :: String.t
 
+  @typedoc "The behavior when the Webhook is invoked. Only `increment` or `decrement` are supported."
+  @type countup_type :: String.t
+
   @typedoc "The display color of the pixel in the pixelation graph. `shibafu`, `momiji`, `sora`, `ichou`, `ajisai` and `kuro` are supported as color kind."
   @type color :: String.t
 
@@ -42,6 +46,9 @@ defmodule PixelaEx do
 
   @typedoc "The quantity to be registered on the specified date."
   @type quantity :: String.t
+
+  @typedoc "The hash string specifying the webhook"
+  @type webhook_hash :: String.t
 
   @typedoc "HTTP response from HTTPotion"
   @type http_result :: HTTPotion.Response.t | %HTTPotion.AsyncResponse{} | %HTTPotion.ErrorResponse{}
