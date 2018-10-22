@@ -10,7 +10,7 @@ pixela\_ex can be installed by adding `pixela_ex` to your list of dependencies i
 
 ```elixir
 def deps do
-  [{:pixela_ex, git: "https://github.com/otoyo/pixela_ex", tag: "0.1.0"}]
+  [{:pixela_ex, git: "https://github.com/otoyo/pixela_ex", tag: "0.2.0"}]
 end
 ```
 
@@ -36,6 +36,11 @@ iex> PixelaEx.create_pixel("a-know", "thisissecret", "test-graph", %{date: "2018
 
 iex> PixelaEx.increment_pixel("a-know", "thisissecret", "test-graph")
 %HTTPotion.Response{body: %{"isSuccess" => true, "message" => "Success."},
+ headers: %HTTPotion.Headers{hdrs: %{...}},
+ status_code: 200}
+
+iex> PixelaEx.create_webhook("a-know", "thisissecret", %{graph_id: "test-graph", type: "increment"})
+%HTTPotion.Response{body: %{"hashString" => "<WebhookHashString>", "isSuccess" => true, "message" => "Success."},
  headers: %HTTPotion.Headers{hdrs: %{...}},
  status_code: 200}
 ```
