@@ -33,14 +33,7 @@ defmodule PixelaEx.Client do
   def _format_key(key) when is_atom(key) do
     key |> Atom.to_string() |> _format_key()
   end
-  def _format_key(key) do
-    {head, tail} =
-      key
-      |> Macro.camelize
-      |> String.split_at(1)
-
-    String.downcase(head) <> tail
-  end
+  def _format_key(key), do: key
 
   def _format_value(true),  do: "yes"
   def _format_value(false), do: "no"

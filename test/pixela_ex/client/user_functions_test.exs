@@ -8,7 +8,7 @@ defmodule PixelaEx.Client.UserFunctionsTest do
       %HTTPotion.Response{status_code: 200,
                           body: %{"message" => "Success.", "isSuccess" => true}} end] do
     PixelaEx.create_user(%{username: "a-know", token: "thisissecret", agree_terms_of_service: true, not_minor: true})
-    assert called PixelaEx.Client.post "users", [body: %{username: "a-know", token: "thisissecret", agree_terms_of_service: true, not_minor: true}]
+    assert called PixelaEx.Client.post "users", [body: %{username: "a-know", token: "thisissecret", agreeTermsOfService: true, notMinor: true}]
   end
 
   test_with_mock "update_user", PixelaEx.Client,

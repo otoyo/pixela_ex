@@ -3,12 +3,12 @@ defmodule PixelaEx.ClientTest do
 
   test "process_request_body" do
     assert PixelaEx.Client.process_request_body("") == ""
-    assert PixelaEx.Client.process_request_body(%{hoge_fuga: true}) == Poison.encode!(%{"hogeFuga" => "yes"})
+    assert PixelaEx.Client.process_request_body(%{hogeFuga: true}) == Poison.encode!(%{"hogeFuga" => "yes"})
   end
 
   test "_format_key" do
-    assert PixelaEx.Client._format_key(:hoge_fuga) == "hogeFuga"
-    assert PixelaEx.Client._format_key("hoge_fuga") == "hogeFuga"
+    assert PixelaEx.Client._format_key(:hogeFuga) == "hogeFuga"
+    assert PixelaEx.Client._format_key("hogeFuga") == "hogeFuga"
   end
 
   test "_format_value" do
