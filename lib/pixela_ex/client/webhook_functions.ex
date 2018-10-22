@@ -12,7 +12,7 @@ defmodule PixelaEx.Client.WebhookFunctions do
       ## Examples
 
           iex> PixelaEx.create_webhook("a-know", "thisissecret", %{graph_id: "test-graph", type: "increment"})
-          %{"hashString" => "<WebhookHashString>", "message" => "Success.", "isSuccess" => true}
+          %HTTPotion.Response{status_code: 200, body: %{"hashString" => "<WebhookHashString>", "message" => "Success.", "isSuccess" => true}, headers: ...}
 
       """
       @spec create_webhook(username, token, %{required(:graph_id) => graph_id, required(:type) => countup_type}) :: http_result
@@ -31,7 +31,7 @@ defmodule PixelaEx.Client.WebhookFunctions do
       ## Examples
 
           iex> PixelaEx.get_webhooks("a-know", "thisissecret")
-          %{"webhooks" => [%{"hashString" => "<WebhookHashString>", "message" => "Success.", "isSuccess" => true}]}
+          %HTTPotion.Response{status_code: 200, body: %{"webhooks" => [%{"hashString" => "<WebhookHashString>", "message" => "Success.", "isSuccess" => true}]}, headers: ...}
 
       """
       @spec get_webhooks(username, token) :: http_result
@@ -45,7 +45,7 @@ defmodule PixelaEx.Client.WebhookFunctions do
       ## Examples
 
           iex> PixelaEx.invoke_webhook("a-know", "<webhookHash>")
-          %{"message" => "Success.", "isSuccess" => true}
+          %HTTPotion.Response{status_code: 200, body: %{"message" => "Success.", "isSuccess" => true}, headers: ...}
 
       """
       @spec invoke_webhook(username, webhook_hash) :: http_result
@@ -58,8 +58,8 @@ defmodule PixelaEx.Client.WebhookFunctions do
 
       ## Examples
 
-      iex> PixelaEx.delete_webhook("a-know", "thisissecret", "<webhookHash>")
-          %{"message" => "Success.", "isSuccess" => true}
+          iex> PixelaEx.delete_webhook("a-know", "thisissecret", "<webhookHash>")
+          %HTTPotion.Response{status_code: 200, body: %{"message" => "Success.", "isSuccess" => true}, headers: ...}
 
       """
       @spec delete_webhook(username, token, webhook_hash) :: http_result

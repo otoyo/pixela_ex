@@ -12,7 +12,7 @@ defmodule PixelaEx.Client.UserFunctions do
       ## Examples
 
           iex> PixelaEx.create_user(%{username: "a-know", token: "thisissecret", agree_terms_of_service: true, not_minor: true})
-          %{"message" => "Success.", "isSuccess" => true}
+          %HTTPotion.Response{status_code: 200, body: %{"message" => "Success.", "isSuccess" => true}, headers: ...}
 
       """
       @spec create_user(%{required(:username) => username, required(:token) => token, required(:agree_terms_of_service) => agree_terms_of_service, required(:not_minor) => not_minor}) :: http_result
@@ -33,7 +33,7 @@ defmodule PixelaEx.Client.UserFunctions do
       ## Examples
 
           iex> PixelaEx.update_user("a-know", "thisissecret", %{new_token: "thisissecret"})
-          %{"message" => "Success.", "isSuccess" => true}
+          %HTTPotion.Response{status_code: 200, body: %{"message" => "Success.", "isSuccess" => true}, headers: ...}
 
       """
       @spec update_user(username, token, %{required(:new_token) => new_token}) :: http_result
@@ -51,7 +51,7 @@ defmodule PixelaEx.Client.UserFunctions do
       ## Examples
 
           iex> PixelaEx.delete_user("a-know", "thisissecret")
-          %{"message" => "Success.", "isSuccess" => true}
+          %HTTPotion.Response{status_code: 200, body: %{"message" => "Success.", "isSuccess" => true}, headers: ...}
 
       """
       @spec delete_user(username, token) :: http_result

@@ -12,7 +12,7 @@ defmodule PixelaEx.Client.PixelFunctions do
       ## Examples
 
           iex> PixelaEx.create_pixel("a-know", "thisissecret", "test-graph", %{date: "20180915", quantity: "5"})
-          %{"message" => "Success.", "isSuccess" => true}
+          %HTTPotion.Response{status_code: 200, body: %{"message" => "Success.", "isSuccess" => true}, headers: ...}
 
       """
       @spec create_pixel(username, token, graph_id, %{required(:date) => date, required(:quantity) => quantity}) :: http_result
@@ -31,7 +31,7 @@ defmodule PixelaEx.Client.PixelFunctions do
       ## Examples
 
           iex> PixelaEx.get_pixel("a-know", "thisissecret", "test-graph", "20180915")
-          %{"quantity" => 5}
+          %HTTPotion.Response{status_code: 200, body: %{"quantity" => 5}, headers: ...}
       """
       @spec get_pixel(username, token, graph_id, date) :: http_result
       def get_pixel(username, token, graph_id, date) do
@@ -44,7 +44,7 @@ defmodule PixelaEx.Client.PixelFunctions do
       ## Examples
 
           iex> PixelaEx.update_pixel("a-know", "thisissecret", "test-graph", "20180915", %{quantity: "7"})
-          %{"message" => "Success.", "isSuccess" => true}
+          %HTTPotion.Response{status_code: 200, body: %{"message" => "Success.", "isSuccess" => true}, headers: ...}
 
       """
       @spec update_pixel(username, token, graph_id, date, %{required(:quantity) => quantity}) :: http_result
@@ -62,7 +62,7 @@ defmodule PixelaEx.Client.PixelFunctions do
       ## Examples
 
           iex> PixelaEx.increment_pixel("a-know", "thisissecret", "test-graph")
-          %{"message" => "Success.", "isSuccess" => true}
+          %HTTPotion.Response{status_code: 200, body: %{"message" => "Success.", "isSuccess" => true}, headers: ...}
 
       """
       @spec increment_pixel(username, token, graph_id) :: http_result
@@ -76,7 +76,7 @@ defmodule PixelaEx.Client.PixelFunctions do
       ## Examples
 
           iex> PixelaEx.decrement_pixel("a-know", "thisissecret", "test-graph")
-          %{"message" => "Success.", "isSuccess" => true}
+          %HTTPotion.Response{status_code: 200, body: %{"message" => "Success.", "isSuccess" => true}, headers: ...}
 
       """
       @spec decrement_pixel(username, token, graph_id) :: http_result
@@ -90,7 +90,7 @@ defmodule PixelaEx.Client.PixelFunctions do
       ## Examples
 
           iex> PixelaEx.delete_pixel("a-know", "thisissecret", "test-graph", "20180915")
-          %{"message" => "Success.", "isSuccess" => true}
+          %HTTPotion.Response{status_code: 200, body: %{"message" => "Success.", "isSuccess" => true}, headers: ...}
 
       """
       @spec delete_pixel(username, token, graph_id, date) :: http_result

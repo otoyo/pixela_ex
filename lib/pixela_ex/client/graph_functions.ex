@@ -12,7 +12,7 @@ defmodule PixelaEx.Client.GraphFunctions do
       ## Examples
 
           iex> PixelaEx.create_graph("a-know", "thisissecret", %{graph_id: "test-graph", name: "graph-name", unit: "commit", type: "int", color: "shibafu"})
-          %{"message" => "Success.", "isSuccess" => true}
+          %HTTPotion.Response{status_code: 200, body: %{"message" => "Success.", "isSuccess" => true}, headers: ...}
 
       """
       @spec create_graph(username, token, %{required(:graph_id) => graph_id, required(:name) => name, required(:unit) => unit, required(:type) => quantity_type, required(:color) => color}) :: http_result
@@ -34,7 +34,7 @@ defmodule PixelaEx.Client.GraphFunctions do
       ## Examples
 
           iex> PixelaEx.get_graphs("a-know", "thisissecret")
-          %{"graphs" => [%{"id" => "test-graph", "name" => "graph-name", "unit" => "commit", "type" => "int", "color" => "shibafu"}]}
+          %HTTPotion.Response{status_code: 200, body: %{"graphs" => [%{"id" => "test-graph", "name" => "graph-name", "unit" => "commit", "type" => "int", "color" => "shibafu"}]}, headers: ...}
 
       """
       @spec get_graphs(username, token) :: http_result
@@ -70,7 +70,7 @@ defmodule PixelaEx.Client.GraphFunctions do
       ## Examples
 
           iex> PixelaEx.update_graph("a-know", "thisissecret", "test-graph", %{name: "graph-name", unit: "commit", color: "shibafu"})
-          %{"message" => "Success.", "isSuccess" => true}
+          %HTTPotion.Response{status_code: 200, body: %{"message" => "Success.", "isSuccess" => true}, headers: ...}
 
       """
       @spec update_graph(username, token, graph_id, %{required(:name) => name, required(:unit) => unit, required(:color) => color}) :: http_result
@@ -90,7 +90,7 @@ defmodule PixelaEx.Client.GraphFunctions do
       ## Examples
 
           iex> PixelaEx.delete_graph("a-know", "thisissecret", "test-graph")
-          %{"message" => "Success.", "isSuccess" => true}
+          %HTTPotion.Response{status_code: 200, body: %{"message" => "Success.", "isSuccess" => true}, headers: ...}
 
       """
       @spec delete_graph(username, token, graph_id) :: http_result
