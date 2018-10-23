@@ -5,7 +5,7 @@ defmodule PixelaEx do
 
   alias PixelaEx.Client.UserFunctions
   alias PixelaEx.Client.GraphFunctions
-  use PixelaEx.Client.PixelFunctions
+  alias PixelaEx.Client.PixelFunctions
   use PixelaEx.Client.WebhookFunctions
 
   @typedoc "User name for Pixela"
@@ -67,4 +67,14 @@ defmodule PixelaEx do
   defdelegate graph_url(username, graph_id, param \\ %{}), to: GraphFunctions
   defdelegate update_graph(username, token, graph_id, param), to: GraphFunctions
   defdelegate delete_graph(username, token, graph_id), to: GraphFunctions
+
+  #
+  # Pixel Functions
+  #
+  defdelegate create_pixel(username, token, graph_id, param), to: PixelFunctions
+  defdelegate get_pixel(username, token, graph_id, date), to: PixelFunctions
+  defdelegate update_pixel(username, token, graph_id, date, param), to: PixelFunctions
+  defdelegate increment_pixel(username, token, graph_id), to: PixelFunctions
+  defdelegate decrement_pixel(username, token, graph_id), to: PixelFunctions
+  defdelegate delete_pixel(username, token, graph_id, date), to: PixelFunctions
 end
