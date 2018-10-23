@@ -3,7 +3,7 @@ defmodule PixelaEx do
   API Client for Pixela.
   """
 
-  use PixelaEx.Client.UserFunctions
+  alias PixelaEx.Client.UserFunctions
   use PixelaEx.Client.GraphFunctions
   use PixelaEx.Client.PixelFunctions
   use PixelaEx.Client.WebhookFunctions
@@ -52,4 +52,11 @@ defmodule PixelaEx do
 
   @typedoc "HTTP response from HTTPotion"
   @type http_result :: HTTPotion.Response.t | %HTTPotion.AsyncResponse{} | %HTTPotion.ErrorResponse{}
+
+  #
+  # User Functions
+  #
+  defdelegate create_user(param), to: UserFunctions
+  defdelegate update_user(username, token, param), to: UserFunctions
+  defdelegate delete_user(username, token), to: UserFunctions
 end
