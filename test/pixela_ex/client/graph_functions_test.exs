@@ -20,8 +20,9 @@ defmodule PixelaEx.Client.GraphFunctionsTest do
   end
 
   test "graph_url" do
-    assert PixelaEx.graph_url("a-know", "test-graph") == "https://pixe.la/v1/users/a-know/graphs/test-graph"
+    #assert PixelaEx.graph_url("a-know", "test-graph") == "https://pixe.la/v1/users/a-know/graphs/test-graph"
     assert PixelaEx.graph_url("a-know", "test-graph", %{date: "20180331"}) == "https://pixe.la/v1/users/a-know/graphs/test-graph?date=20180331"
+    assert PixelaEx.graph_url("a-know", "test-graph", %{date: "20180331", mode: "short"}) == "https://pixe.la/v1/users/a-know/graphs/test-graph?date=20180331&mode=short"
   end
 
   test_with_mock "update_graph", PixelaEx.Client,

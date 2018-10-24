@@ -51,12 +51,22 @@ defmodule PixelaEx.Client.GraphFunctions do
       "https://pixe.la/v1/users/a-know/graphs/test-graph?date=20180331"
 
   """
-  @spec graph_url(PixelaEx.username, PixelaEx.graph_id, %{optional(:date) => PixelaEx.date}) :: String.t
+  @spec graph_url(PixelaEx.username, PixelaEx.graph_id, %{optional(:date) => PixelaEx.date, optional(:mode) => PixelaEx.mode}) :: String.t
   def graph_url(username, graph_id, param \\ %{}) when is_map(param) do
-    query = case param[:date] do
-      nil   -> ""
-      date  -> "?date=#{date}"
-    end
+    query =
+      ~w(date mode)a
+      |> Enum.map(fn key ->
+        case param[key] do
+          nil -> nil
+          val -> "#{key}=#{val}"
+        end
+      end)
+      |> Enum.reject(&is_nil/1)
+      |> Enum.join("&")
+      |> case do
+        ""  -> ""
+        q   -> "?" <> q
+      end
 
     PixelaEx.Client.api_endpoint() <> "users/#{username}/graphs/#{graph_id}" <> query
   end

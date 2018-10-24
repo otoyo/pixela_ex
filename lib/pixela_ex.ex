@@ -44,6 +44,9 @@ defmodule PixelaEx do
   @typedoc "The date on which the quantity is to be recorded. It is specified in yyyyMMdd format."
   @type date :: String.t
 
+  @typedoc "The graph display mode. As of October 23, 2018, support only short mode for displaying only about 90 days."
+  @type mode :: String.t
+
   @typedoc "The quantity to be registered on the specified date."
   @type quantity :: String.t
 
