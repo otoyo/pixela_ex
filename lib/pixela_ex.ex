@@ -56,12 +56,25 @@ defmodule PixelaEx do
   @typedoc "HTTP response from HTTPotion"
   @type http_result :: HTTPotion.Response.t | %HTTPotion.AsyncResponse{} | %HTTPotion.ErrorResponse{}
 
+  def apply({f, a}), do: apply(PixelaEx.Client, f, a)
+
   #
   # User Functions
   #
-  defdelegate create_user(param), to: UserFunctions
-  defdelegate update_user(username, token, param), to: UserFunctions
-  defdelegate delete_user(username, token), to: UserFunctions
+  def create_user(param) do
+    UserFunctions.create_user(param)
+    |> apply
+  end
+
+  def update_user(username, token, param) do
+    UserFunctions.update_user(username, token, param)
+    |> apply
+  end
+
+  def delete_user(username, token) do
+    UserFunctions.delete_user(username, token)
+    |> apply
+  end
 
   # Graph Functions
   #
