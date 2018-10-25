@@ -136,8 +136,23 @@ defmodule PixelaEx do
   #
   # Webhook Functions
   #
-  defdelegate create_webhook(username, token, param), to: WebhookFunctions
-  defdelegate get_webhooks(username, token), to: WebhookFunctions
-  defdelegate invoke_webhook(username, webhook_hash), to: WebhookFunctions
-  defdelegate delete_webhook(username, token, webhook_hash), to: WebhookFunctions
+  def create_webhook(username, token, param) do
+    WebhookFunctions.create_webhook(username, token, param)
+    |> apply
+  end
+
+  def get_webhooks(username, token) do
+    WebhookFunctions.get_webhooks(username, token)
+    |> apply
+  end
+
+  def invoke_webhook(username, webhook_hash) do
+    WebhookFunctions.invoke_webhook(username, webhook_hash)
+    |> apply
+  end
+
+  def delete_webhook(username, token, webhook_hash) do
+    WebhookFunctions.delete_webhook(username, token, webhook_hash)
+    |> apply
+  end
 end
