@@ -8,8 +8,8 @@ defmodule PixelaEx.Client.PixelFunctions do
 
   ## Examples
 
-      iex> PixelaEx.create_pixel("a-know", "thisissecret", "test-graph", %{date: "20180915", quantity: "5"})
-      %HTTPotion.Response{status_code: 200, body: %{"message" => "Success.", "isSuccess" => true}, headers: ...}
+      iex> PixelaEx.Client.PixelFunctions.create_pixel("a-know", "thisissecret", "test-graph", %{date: "20180915", quantity: "5"})
+      {:post, ["users/a-know/graphs/test-graph", [body: %{date: "20180915", quantity: "5"}, headers: ["X-USER-TOKEN": "thisissecret"]]]}
 
   """
   @spec create_pixel(PixelaEx.username, PixelaEx.token, PixelaEx.graph_id, %{required(:date) => PixelaEx.date, required(:quantity) => PixelaEx.quantity}) :: PixelaEx.http_result
@@ -19,7 +19,7 @@ defmodule PixelaEx.Client.PixelFunctions do
       quantity: quantity
     }
 
-    PixelaEx.Client.post "users/#{username}/graphs/#{graph_id}", [body: body, headers: ["X-USER-TOKEN": token]]
+    {:post, ["users/#{username}/graphs/#{graph_id}", [body: body, headers: ["X-USER-TOKEN": token]]]}
   end
 
   @doc """
@@ -27,13 +27,13 @@ defmodule PixelaEx.Client.PixelFunctions do
 
   ## Examples
 
-      iex> PixelaEx.get_pixel("a-know", "thisissecret", "test-graph", "20180915")
-      %HTTPotion.Response{status_code: 200, body: %{"quantity" => 5}, headers: ...}
+      iex> PixelaEx.Client.PixelFunctions.get_pixel("a-know", "thisissecret", "test-graph", "20180915")
+      {:get, ["users/a-know/graphs/test-graph/20180915", [headers: ["X-USER-TOKEN": "thisissecret"]]]}
 
   """
   @spec get_pixel(PixelaEx.username, PixelaEx.token, PixelaEx.graph_id, PixelaEx.date) :: PixelaEx.http_result
   def get_pixel(username, token, graph_id, date) do
-    PixelaEx.Client.get "users/#{username}/graphs/#{graph_id}/#{date}", [headers: ["X-USER-TOKEN": token]]
+    {:get, ["users/#{username}/graphs/#{graph_id}/#{date}", [headers: ["X-USER-TOKEN": token]]]}
   end
 
   @doc """
@@ -41,8 +41,8 @@ defmodule PixelaEx.Client.PixelFunctions do
 
   ## Examples
 
-      iex> PixelaEx.update_pixel("a-know", "thisissecret", "test-graph", "20180915", %{quantity: "7"})
-      %HTTPotion.Response{status_code: 200, body: %{"message" => "Success.", "isSuccess" => true}, headers: ...}
+      iex> PixelaEx.Client.PixelFunctions.update_pixel("a-know", "thisissecret", "test-graph", "20180915", %{quantity: "7"})
+      {:put, ["users/a-know/graphs/test-graph/20180915", [body: %{quantity: "7"}, headers: ["X-USER-TOKEN": "thisissecret"]]]}
 
   """
   @spec update_pixel(PixelaEx.username, PixelaEx.token, PixelaEx.graph_id, PixelaEx.date, %{required(:quantity) => PixelaEx.quantity}) :: PixelaEx.http_result
@@ -51,7 +51,7 @@ defmodule PixelaEx.Client.PixelFunctions do
       quantity: quantity
     }
 
-    PixelaEx.Client.put "users/#{username}/graphs/#{graph_id}/#{date}", [body: body, headers: ["X-USER-TOKEN": token]]
+    {:put, ["users/#{username}/graphs/#{graph_id}/#{date}", [body: body, headers: ["X-USER-TOKEN": token]]]}
   end
 
   @doc """
@@ -59,13 +59,13 @@ defmodule PixelaEx.Client.PixelFunctions do
 
   ## Examples
 
-      iex> PixelaEx.increment_pixel("a-know", "thisissecret", "test-graph")
-      %HTTPotion.Response{status_code: 200, body: %{"message" => "Success.", "isSuccess" => true}, headers: ...}
+      iex> PixelaEx.Client.PixelFunctions.increment_pixel("a-know", "thisissecret", "test-graph")
+      {:put, ["users/a-know/graphs/test-graph/increment", [headers: ["X-USER-TOKEN": "thisissecret", "Content-Length": 0]]]}
 
   """
   @spec increment_pixel(PixelaEx.username, PixelaEx.token, PixelaEx.graph_id) :: PixelaEx.http_result
   def increment_pixel(username, token, graph_id) do
-    PixelaEx.Client.put "users/#{username}/graphs/#{graph_id}/increment", [headers: ["X-USER-TOKEN": token, "Content-Length": 0]]
+    {:put, ["users/#{username}/graphs/#{graph_id}/increment", [headers: ["X-USER-TOKEN": token, "Content-Length": 0]]]}
   end
 
   @doc """
@@ -73,13 +73,13 @@ defmodule PixelaEx.Client.PixelFunctions do
 
   ## Examples
 
-      iex> PixelaEx.decrement_pixel("a-know", "thisissecret", "test-graph")
-      %HTTPotion.Response{status_code: 200, body: %{"message" => "Success.", "isSuccess" => true}, headers: ...}
+      iex> PixelaEx.Client.PixelFunctions.decrement_pixel("a-know", "thisissecret", "test-graph")
+      {:put, ["users/a-know/graphs/test-graph/decrement", [headers: ["X-USER-TOKEN": "thisissecret", "Content-Length": 0]]]}
 
   """
   @spec decrement_pixel(PixelaEx.username, PixelaEx.token, PixelaEx.graph_id) :: PixelaEx.http_result
   def decrement_pixel(username, token, graph_id) do
-    PixelaEx.Client.put "users/#{username}/graphs/#{graph_id}/decrement", [headers: ["X-USER-TOKEN": token, "Content-Length": 0]]
+    {:put, ["users/#{username}/graphs/#{graph_id}/decrement", [headers: ["X-USER-TOKEN": token, "Content-Length": 0]]]}
   end
 
   @doc """
@@ -87,12 +87,12 @@ defmodule PixelaEx.Client.PixelFunctions do
 
   ## Examples
 
-      iex> PixelaEx.delete_pixel("a-know", "thisissecret", "test-graph", "20180915")
-      %HTTPotion.Response{status_code: 200, body: %{"message" => "Success.", "isSuccess" => true}, headers: ...}
+      iex> PixelaEx.Client.PixelFunctions.delete_pixel("a-know", "thisissecret", "test-graph", "20180915")
+      {:delete, ["users/a-know/graphs/test-graph/20180915", [headers: ["X-USER-TOKEN": "thisissecret"]]]}
 
   """
   @spec delete_pixel(PixelaEx.username, PixelaEx.token, PixelaEx.graph_id, PixelaEx.date) :: PixelaEx.http_result
   def delete_pixel(username, token, graph_id, date) do
-    PixelaEx.Client.delete "users/#{username}/graphs/#{graph_id}/#{date}", [headers: ["X-USER-TOKEN": token]]
+    {:delete, ["users/#{username}/graphs/#{graph_id}/#{date}", [headers: ["X-USER-TOKEN": token]]]}
   end
 end

@@ -103,12 +103,35 @@ defmodule PixelaEx do
   #
   # Pixel Functions
   #
-  defdelegate create_pixel(username, token, graph_id, param), to: PixelFunctions
-  defdelegate get_pixel(username, token, graph_id, date), to: PixelFunctions
-  defdelegate update_pixel(username, token, graph_id, date, param), to: PixelFunctions
-  defdelegate increment_pixel(username, token, graph_id), to: PixelFunctions
-  defdelegate decrement_pixel(username, token, graph_id), to: PixelFunctions
-  defdelegate delete_pixel(username, token, graph_id, date), to: PixelFunctions
+  def create_pixel(username, token, graph_id, param) do
+    PixelFunctions.create_pixel(username, token, graph_id, param)
+    |> apply
+  end
+
+  def get_pixel(username, token, graph_id, date) do
+    PixelFunctions.get_pixel(username, token, graph_id, date)
+    |> apply
+  end
+
+  def update_pixel(username, token, graph_id, date, param) do
+    PixelFunctions.update_pixel(username, token, graph_id, date, param)
+    |> apply
+  end
+
+  def increment_pixel(username, token, graph_id) do
+    PixelFunctions.increment_pixel(username, token, graph_id)
+    |> apply
+  end
+
+  def decrement_pixel(username, token, graph_id) do
+    PixelFunctions.decrement_pixel(username, token, graph_id)
+    |> apply
+  end
+
+  def delete_pixel(username, token, graph_id, date) do
+    PixelFunctions.delete_pixel(username, token, graph_id, date)
+    |> apply
+  end
 
   #
   # Webhook Functions
