@@ -78,11 +78,27 @@ defmodule PixelaEx do
 
   # Graph Functions
   #
-  defdelegate create_graph(username, token, param), to: GraphFunctions
-  defdelegate get_graphs(username, token), to: GraphFunctions
+  def create_graph(username, token, param) do
+    GraphFunctions.create_graph(username, token, param)
+    |> apply
+  end
+
+  def get_graphs(username, token) do
+   GraphFunctions.get_graphs(username, token)
+   |> apply
+  end
+
   defdelegate graph_url(username, graph_id, param \\ %{}), to: GraphFunctions
-  defdelegate update_graph(username, token, graph_id, param), to: GraphFunctions
-  defdelegate delete_graph(username, token, graph_id), to: GraphFunctions
+
+  def update_graph(username, token, graph_id, param) do
+    GraphFunctions.update_graph(username, token, graph_id, param)
+    |> apply
+  end
+
+  def delete_graph(username, token, graph_id) do
+    GraphFunctions.delete_graph(username, token, graph_id)
+    |> apply
+  end
 
   #
   # Pixel Functions
