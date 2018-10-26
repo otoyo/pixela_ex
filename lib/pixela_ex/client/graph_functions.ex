@@ -8,8 +8,8 @@ defmodule PixelaEx.Client.GraphFunctions do
 
   ## Examples
 
-      iex> PixelaEx.create_graph("a-know", "thisissecret", %{graph_id: "test-graph", name: "graph-name", unit: "commit", type: "int", color: "shibafu"})
-      %HTTPotion.Response{status_code: 200, body: %{"message" => "Success.", "isSuccess" => true}, headers: ...}
+      iex> PixelaEx.Client.GraphFunctions.create_graph("a-know", "thisissecret", %{graph_id: "test-graph", name: "graph-name", unit: "commit", type: "int", color: "shibafu"})
+      {:post, ["users/a-know/graphs", [body: %{id: "test-graph", name: "graph-name", unit: "commit", type: "int", color: "shibafu"}, headers: ["X-USER-TOKEN": "thisissecret"]]]}
 
   """
   @spec create_graph(PixelaEx.username, PixelaEx.token, %{required(:graph_id) => PixelaEx.graph_id, required(:name) => PixelaEx.name, required(:unit) => PixelaEx.unit, required(:type) => PixelaEx.quantity_type, required(:color) => PixelaEx.color}) :: PixelaEx.http_result
@@ -22,7 +22,7 @@ defmodule PixelaEx.Client.GraphFunctions do
       color:  color
     }
 
-    PixelaEx.Client.post "users/#{username}/graphs", [body: body, headers: ["X-USER-TOKEN": token]]
+    {:post, ["users/#{username}/graphs", [body: body, headers: ["X-USER-TOKEN": token]]]}
   end
 
   @doc """
@@ -30,13 +30,13 @@ defmodule PixelaEx.Client.GraphFunctions do
 
   ## Examples
 
-      iex> PixelaEx.get_graphs("a-know", "thisissecret")
-      %HTTPotion.Response{status_code: 200, body: %{"graphs" => [%{"id" => "test-graph", "name" => "graph-name", "unit" => "commit", "type" => "int", "color" => "shibafu"}]}, headers: ...}
+      iex> PixelaEx.Client.GraphFunctions.get_graphs("a-know", "thisissecret")
+      {:get, ["users/a-know/graphs", [headers: ["X-USER-TOKEN": "thisissecret"]]]}
 
   """
   @spec get_graphs(PixelaEx.username, PixelaEx.token) :: PixelaEx.http_result
   def get_graphs(username, token) do
-    PixelaEx.Client.get "users/#{username}/graphs", [headers: ["X-USER-TOKEN": token]]
+    {:get, ["users/#{username}/graphs", [headers: ["X-USER-TOKEN": token]]]}
   end
 
   @doc """
@@ -44,10 +44,10 @@ defmodule PixelaEx.Client.GraphFunctions do
 
   ## Examples
 
-      iex> PixelaEx.get_graph("a-know", "test-graph")
+      iex> PixelaEx.Client.GraphFunctions.graph_url("a-know", "test-graph")
       "https://pixe.la/v1/users/a-know/graphs/test-graph"
 
-      iex> PixelaEx.get_graph("a-know", "test-graph", %{date: "20180331"})
+      iex> PixelaEx.Client.GraphFunctions.graph_url("a-know", "test-graph", %{date: "20180331"})
       "https://pixe.la/v1/users/a-know/graphs/test-graph?date=20180331"
 
   """
@@ -76,8 +76,8 @@ defmodule PixelaEx.Client.GraphFunctions do
 
   ## Examples
 
-      iex> PixelaEx.update_graph("a-know", "thisissecret", "test-graph", %{name: "graph-name", unit: "commit", color: "shibafu"})
-      %HTTPotion.Response{status_code: 200, body: %{"message" => "Success.", "isSuccess" => true}, headers: ...}
+      iex> PixelaEx.Client.GraphFunctions.update_graph("a-know", "thisissecret", "test-graph", %{name: "graph-name", unit: "commit", color: "shibafu"})
+      {:put, ["users/a-know/graphs/test-graph", [body: %{name: "graph-name", unit: "commit", color: "shibafu"}, headers: ["X-USER-TOKEN": "thisissecret"]]]}
 
   """
   @spec update_graph(PixelaEx.username, PixelaEx.token, PixelaEx.graph_id, %{required(:name) => PixelaEx.name, required(:unit) => PixelaEx.unit, required(:color) => PixelaEx.color}) :: PixelaEx.http_result
@@ -88,7 +88,7 @@ defmodule PixelaEx.Client.GraphFunctions do
       color:  color
     }
 
-    PixelaEx.Client.put "users/#{username}/graphs/#{graph_id}", [body: body, headers: ["X-USER-TOKEN": token]]
+    {:put, ["users/#{username}/graphs/#{graph_id}", [body: body, headers: ["X-USER-TOKEN": token]]]}
   end
 
   @doc """
@@ -96,12 +96,12 @@ defmodule PixelaEx.Client.GraphFunctions do
 
   ## Examples
 
-      iex> PixelaEx.delete_graph("a-know", "thisissecret", "test-graph")
-      %HTTPotion.Response{status_code: 200, body: %{"message" => "Success.", "isSuccess" => true}, headers: ...}
+      iex> PixelaEx.Client.GraphFunctions.delete_graph("a-know", "thisissecret", "test-graph")
+      {:delete, ["users/a-know/graphs/test-graph", [headers: ["X-USER-TOKEN": "thisissecret"]]]}
 
   """
   @spec delete_graph(PixelaEx.username, PixelaEx.token, PixelaEx.graph_id) :: PixelaEx.http_result
   def delete_graph(username, token, graph_id) do
-    PixelaEx.Client.delete "users/#{username}/graphs/#{graph_id}", [headers: ["X-USER-TOKEN": token]]
+    {:delete, ["users/#{username}/graphs/#{graph_id}", [headers: ["X-USER-TOKEN": token]]]}
   end
 end

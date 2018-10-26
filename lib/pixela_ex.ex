@@ -56,36 +56,103 @@ defmodule PixelaEx do
   @typedoc "HTTP response from HTTPotion"
   @type http_result :: HTTPotion.Response.t | %HTTPotion.AsyncResponse{} | %HTTPotion.ErrorResponse{}
 
+  def apply({f, a}), do: apply(PixelaEx.Client, f, a)
+
   #
   # User Functions
   #
-  defdelegate create_user(param), to: UserFunctions
-  defdelegate update_user(username, token, param), to: UserFunctions
-  defdelegate delete_user(username, token), to: UserFunctions
+  def create_user(param) do
+    UserFunctions.create_user(param)
+    |> apply
+  end
+
+  def update_user(username, token, param) do
+    UserFunctions.update_user(username, token, param)
+    |> apply
+  end
+
+  def delete_user(username, token) do
+    UserFunctions.delete_user(username, token)
+    |> apply
+  end
 
   # Graph Functions
   #
-  defdelegate create_graph(username, token, param), to: GraphFunctions
-  defdelegate get_graphs(username, token), to: GraphFunctions
+  def create_graph(username, token, param) do
+    GraphFunctions.create_graph(username, token, param)
+    |> apply
+  end
+
+  def get_graphs(username, token) do
+   GraphFunctions.get_graphs(username, token)
+   |> apply
+  end
+
   defdelegate graph_url(username, graph_id, param \\ %{}), to: GraphFunctions
-  defdelegate update_graph(username, token, graph_id, param), to: GraphFunctions
-  defdelegate delete_graph(username, token, graph_id), to: GraphFunctions
+
+  def update_graph(username, token, graph_id, param) do
+    GraphFunctions.update_graph(username, token, graph_id, param)
+    |> apply
+  end
+
+  def delete_graph(username, token, graph_id) do
+    GraphFunctions.delete_graph(username, token, graph_id)
+    |> apply
+  end
 
   #
   # Pixel Functions
   #
-  defdelegate create_pixel(username, token, graph_id, param), to: PixelFunctions
-  defdelegate get_pixel(username, token, graph_id, date), to: PixelFunctions
-  defdelegate update_pixel(username, token, graph_id, date, param), to: PixelFunctions
-  defdelegate increment_pixel(username, token, graph_id), to: PixelFunctions
-  defdelegate decrement_pixel(username, token, graph_id), to: PixelFunctions
-  defdelegate delete_pixel(username, token, graph_id, date), to: PixelFunctions
+  def create_pixel(username, token, graph_id, param) do
+    PixelFunctions.create_pixel(username, token, graph_id, param)
+    |> apply
+  end
+
+  def get_pixel(username, token, graph_id, date) do
+    PixelFunctions.get_pixel(username, token, graph_id, date)
+    |> apply
+  end
+
+  def update_pixel(username, token, graph_id, date, param) do
+    PixelFunctions.update_pixel(username, token, graph_id, date, param)
+    |> apply
+  end
+
+  def increment_pixel(username, token, graph_id) do
+    PixelFunctions.increment_pixel(username, token, graph_id)
+    |> apply
+  end
+
+  def decrement_pixel(username, token, graph_id) do
+    PixelFunctions.decrement_pixel(username, token, graph_id)
+    |> apply
+  end
+
+  def delete_pixel(username, token, graph_id, date) do
+    PixelFunctions.delete_pixel(username, token, graph_id, date)
+    |> apply
+  end
 
   #
   # Webhook Functions
   #
-  defdelegate create_webhook(username, token, param), to: WebhookFunctions
-  defdelegate get_webhooks(username, token), to: WebhookFunctions
-  defdelegate invoke_webhook(username, webhook_hash), to: WebhookFunctions
-  defdelegate delete_webhook(username, token, webhook_hash), to: WebhookFunctions
+  def create_webhook(username, token, param) do
+    WebhookFunctions.create_webhook(username, token, param)
+    |> apply
+  end
+
+  def get_webhooks(username, token) do
+    WebhookFunctions.get_webhooks(username, token)
+    |> apply
+  end
+
+  def invoke_webhook(username, webhook_hash) do
+    WebhookFunctions.invoke_webhook(username, webhook_hash)
+    |> apply
+  end
+
+  def delete_webhook(username, token, webhook_hash) do
+    WebhookFunctions.delete_webhook(username, token, webhook_hash)
+    |> apply
+  end
 end
