@@ -92,8 +92,10 @@ defmodule PixelaEx do
   end
 
   def get_graphs(username, token) do
-   GraphFunctions.get_graphs(username, token)
-   |> apply
+   result =
+     GraphFunctions.get_graphs(username, token)
+     |> apply
+   {:ok, result}
   end
 
   defdelegate graph_url(username, graph_id, param \\ %{}), to: GraphFunctions
