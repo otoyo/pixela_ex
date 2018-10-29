@@ -61,9 +61,11 @@ defmodule PixelaEx do
   #
   # User Functions
   #
-  def create_user(param) do
-    UserFunctions.create_user(param)
-    |> apply
+  def create_user(username, token, agree_terms_of_service, not_minor) do
+    result =
+      UserFunctions.create_user(username, token, agree_terms_of_service, not_minor)
+      |> apply
+    {:ok, result}
   end
 
   def update_user(username, token, param) do

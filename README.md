@@ -19,10 +19,10 @@ end
 Some basic examples:
 
 ```elixir
-iex> PixelaEx.create_user(%{username: "a-know", token: "thisissecret", agree_terms_of_service: true, not_minor: true})
-%HTTPotion.Response{body: %{"isSuccess" => true, "message" => "Success."},
+iex> PixelaEx.create_user("a-know", "thisissecret", true, true)
+{:ok, %HTTPotion.Response{body: %{"isSuccess" => true, "message" => "Success."},
  headers: %HTTPotion.Headers{hdrs: %{...}},
- status_code: 200}
+ status_code: 200}}
 
 iex> PixelaEx.create_graph("a-know", "thisissecret", %{graph_id: "test-graph", name: "graph-name", unit: "commit", type: "int", color: "shibafu"})
 %HTTPotion.Response{body: %{"isSuccess" => true, "message" => "Success."},

@@ -8,12 +8,12 @@ defmodule PixelaEx.Client.UserFunctions do
 
   ## Examples
 
-      iex> PixelaEx.Client.UserFunctions.create_user(%{username: "a-know", token: "thisissecret", agree_terms_of_service: true, not_minor: true})
+      iex> PixelaEx.Client.UserFunctions.create_user("a-know", "thisissecret", true, true)
       {:post, ["users", [body: %{username: "a-know", token: "thisissecret", agreeTermsOfService: true, notMinor: true}]]}
 
   """
-  @spec create_user(%{required(:username) => PixelaEx.username, required(:token) => PixelaEx.token, required(:agree_terms_of_service) => PixelaEx.agree_terms_of_service, required(:not_minor) => PixelaEx.not_minor}) :: PixelaEx.http_result
-  def create_user(%{username: username, token: token, agree_terms_of_service: agree_terms_of_service, not_minor: not_minor}) do
+  @spec create_user(PixelaEx.username, PixelaEx.token, PixelaEx.agree_terms_of_service, PixelaEx.not_minor) :: PixelaEx.http_result
+  def create_user(username, token, agree_terms_of_service, not_minor) do
     body = %{
       username:             username,
       token:                token,
