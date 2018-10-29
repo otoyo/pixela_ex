@@ -76,8 +76,10 @@ defmodule PixelaEx do
   end
 
   def delete_user(username, token) do
-    UserFunctions.delete_user(username, token)
-    |> apply
+    result =
+      UserFunctions.delete_user(username, token)
+      |> apply
+    {:ok, result}
   end
 
   # Graph Functions
