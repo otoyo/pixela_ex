@@ -84,9 +84,11 @@ defmodule PixelaEx do
 
   # Graph Functions
   #
-  def create_graph(username, token, param) do
-    GraphFunctions.create_graph(username, token, param)
-    |> apply
+  def create_graph(username, token, id, name, unit, type, color) do
+    result =
+      GraphFunctions.create_graph(username, token, id, name, unit, type, color)
+      |> apply
+    {:ok, result}
   end
 
   def get_graphs(username, token) do

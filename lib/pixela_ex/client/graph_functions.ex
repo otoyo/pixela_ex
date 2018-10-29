@@ -8,17 +8,17 @@ defmodule PixelaEx.Client.GraphFunctions do
 
   ## Examples
 
-      iex> PixelaEx.Client.GraphFunctions.create_graph("a-know", "thisissecret", %{graph_id: "test-graph", name: "graph-name", unit: "commit", type: "int", color: "shibafu"})
+      iex> PixelaEx.Client.GraphFunctions.create_graph("a-know", "thisissecret", "test-graph", "graph-name", "commit", "int", "shibafu")
       {:post, ["users/a-know/graphs", [body: %{id: "test-graph", name: "graph-name", unit: "commit", type: "int", color: "shibafu"}, headers: ["X-USER-TOKEN": "thisissecret"]]]}
 
   """
-  @spec create_graph(PixelaEx.username, PixelaEx.token, %{required(:graph_id) => PixelaEx.graph_id, required(:name) => PixelaEx.name, required(:unit) => PixelaEx.unit, required(:type) => PixelaEx.quantity_type, required(:color) => PixelaEx.color}) :: PixelaEx.http_result
-  def create_graph(username, token, %{graph_id: graph_id, name: name, unit: unit, type: quantity_type, color: color}) do
+  @spec create_graph(PixelaEx.username, PixelaEx.token, PixelaEx.graph_id, PixelaEx.name, PixelaEx.unit, PixelaEx.quantity_type, PixelaEx.color) :: PixelaEx.http_result
+  def create_graph(username, token, graph_id, name, unit, type, color) do
     body = %{
       id:     graph_id,
       name:   name,
       unit:   unit,
-      type:   quantity_type,
+      type:   type,
       color:  color
     }
 

@@ -31,7 +31,7 @@ defmodule PixelaExTest do
     [post: fn(_url, _headers) ->
       %HTTPotion.Response{status_code: 200,
                           body: %{"message" => "Success.", "isSuccess" => true}} end] do
-    PixelaEx.create_graph("a-know", "thisissecret", %{graph_id: "test-graph", name: "graph-name", unit: "commit", type: "int", color: "shibafu"})
+    PixelaEx.create_graph("a-know", "thisissecret", "test-graph", "graph-name", "commit", "int", "shibafu")
     assert called PixelaEx.Client.post "users/a-know/graphs", [body: %{id: "test-graph", name: "graph-name", unit: "commit", type: "int", color: "shibafu"}, headers: ["X-USER-TOKEN": "thisissecret"]]
   end
 

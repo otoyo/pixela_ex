@@ -24,10 +24,10 @@ iex> PixelaEx.create_user("a-know", "thisissecret", true, true)
  headers: %HTTPotion.Headers{hdrs: %{...}},
  status_code: 200}}
 
-iex> PixelaEx.create_graph("a-know", "thisissecret", %{graph_id: "test-graph", name: "graph-name", unit: "commit", type: "int", color: "shibafu"})
-%HTTPotion.Response{body: %{"isSuccess" => true, "message" => "Success."},
- headers: %HTTPotion.Headers{hdrs:...}},
- status_code: 200}
+iex> PixelaEx.create_graph("a-know", "thisissecret", "test-graph", "graph-name", "commit", "int", "shibafu")
+{:ok, %HTTPotion.Response{body: %{"isSuccess" => true, "message" => "Success."},
+ headers: %HTTPotion.Headers{hdrs: %{...}},
+ status_code: 200}}
 
 iex> PixelaEx.create_pixel("a-know", "thisissecret", "test-graph", %{date: "20181020", quantity: "5"})
 %HTTPotion.Response{body: %{"isSuccess" => true, "message" => "Success."},
