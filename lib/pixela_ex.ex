@@ -68,9 +68,11 @@ defmodule PixelaEx do
     {:ok, result}
   end
 
-  def update_user(username, token, param) do
-    UserFunctions.update_user(username, token, param)
-    |> apply
+  def update_user(username, token, new_token) do
+    result =
+      UserFunctions.update_user(username, token, new_token)
+      |> apply
+    {:ok, result}
   end
 
   def delete_user(username, token) do

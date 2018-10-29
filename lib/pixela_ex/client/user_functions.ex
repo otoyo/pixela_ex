@@ -29,12 +29,12 @@ defmodule PixelaEx.Client.UserFunctions do
 
   ## Examples
 
-      iex> PixelaEx.Client.UserFunctions.update_user("a-know", "thisissecret", %{new_token: "thisissecret"})
+      iex> PixelaEx.Client.UserFunctions.update_user("a-know", "thisissecret", "thisissecret")
       {:put, ["users/a-know", [body: %{new_token: "thisissecret"}, headers: ["X-USER-TOKEN": "thisissecret"]]]}
 
   """
-  @spec update_user(PixelaEx.username, PixelaEx.token, %{required(:new_token) => PixelaEx.new_token}) :: PixelaEx.http_result
-  def update_user(username, token, %{new_token: new_token}) do
+  @spec update_user(PixelaEx.username, PixelaEx.token, PixelaEx.new_token) :: PixelaEx.http_result
+  def update_user(username, token, new_token) do
     body = %{
       new_token: new_token
     }
