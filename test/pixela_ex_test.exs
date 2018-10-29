@@ -43,10 +43,12 @@ defmodule PixelaExTest do
     assert called PixelaEx.Client.get "users/a-know/graphs", [headers: ["X-USER-TOKEN": "thisissecret"]]
   end
 
-  test "graph_url" do
-    #assert PixelaEx.graph_url("a-know", "test-graph") == "https://pixe.la/v1/users/a-know/graphs/test-graph"
-    assert PixelaEx.graph_url("a-know", "test-graph", %{date: "20180331"}) == "https://pixe.la/v1/users/a-know/graphs/test-graph?date=20180331"
-    assert PixelaEx.graph_url("a-know", "test-graph", %{date: "20180331", mode: "short"}) == "https://pixe.la/v1/users/a-know/graphs/test-graph?date=20180331&mode=short"
+  test_with_mock "get_graph", PixelaEx.Client,
+    [get: fn(_url, _headers) ->
+      %HTTPotion.Response{status_code: 200,
+                          body: "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"220\" height=\"135\">...</svg>"} end] do
+    PixelaEx.get_graph("a-know", "test-graph", date: "20180331", mode: "short")
+    assert called PixelaEx.Client.get "users/a-know/graphs/test-graph?date=20180331&mode=short", []
   end
 
   test_with_mock "update_graph", PixelaEx.Client,

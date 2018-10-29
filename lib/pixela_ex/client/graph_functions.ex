@@ -44,19 +44,19 @@ defmodule PixelaEx.Client.GraphFunctions do
 
   ## Examples
 
-      iex> PixelaEx.Client.GraphFunctions.graph_url("a-know", "test-graph")
-      "https://pixe.la/v1/users/a-know/graphs/test-graph"
+      iex> PixelaEx.Client.GraphFunctions.get_graph("a-know", "test-graph", [])
+      {:get, ["users/a-know/graphs/test-graph", []]}
 
-      iex> PixelaEx.Client.GraphFunctions.graph_url("a-know", "test-graph", %{date: "20180331"})
-      "https://pixe.la/v1/users/a-know/graphs/test-graph?date=20180331"
+      iex> PixelaEx.Client.GraphFunctions.get_graph("a-know", "test-graph", date: "20180331", mode: "short")
+      {:get, ["users/a-know/graphs/test-graph?date=20180331&mode=short", []]}
 
   """
-  @spec graph_url(PixelaEx.username, PixelaEx.graph_id, %{optional(:date) => PixelaEx.date, optional(:mode) => PixelaEx.mode}) :: String.t
-  def graph_url(username, graph_id, param \\ %{}) when is_map(param) do
+  @spec get_graph(PixelaEx.username, PixelaEx.graph_id, [date: PixelaEx.date, mode: PixelaEx.mode]) :: String.t
+  def get_graph(username, graph_id, param) when is_list(param) do
     query =
       ~w(date mode)a
       |> Enum.map(fn key ->
-        case param[key] do
+        case Keyword.get(param, key) do
           nil -> nil
           val -> "#{key}=#{val}"
         end
@@ -68,7 +68,7 @@ defmodule PixelaEx.Client.GraphFunctions do
         q   -> "?" <> q
       end
 
-    PixelaEx.Client.api_endpoint() <> "users/#{username}/graphs/#{graph_id}" <> query
+    {:get, ["users/#{username}/graphs/#{graph_id}" <> query, []]}
   end
 
   @doc """
