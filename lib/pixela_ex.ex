@@ -113,8 +113,10 @@ defmodule PixelaEx do
   end
 
   def delete_graph(username, token, graph_id) do
-    GraphFunctions.delete_graph(username, token, graph_id)
-    |> apply
+    result =
+      GraphFunctions.delete_graph(username, token, graph_id)
+      |> apply
+    {:ok, result}
   end
 
   #
