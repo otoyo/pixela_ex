@@ -55,8 +55,8 @@ defmodule PixelaExTest do
     [put: fn(_url, _headers) ->
       %HTTPotion.Response{status_code: 200,
                           body: %{"message" => "Success.", "isSuccess" => true}} end] do
-    PixelaEx.update_graph("a-know", "thisissecret", "test-graph", %{name: "graph-name", unit: "commit", color: "shibafu"})
-    assert called PixelaEx.Client.put "users/a-know/graphs/test-graph", [body: %{name: "graph-name", unit: "commit", color: "shibafu"}, headers: ["X-USER-TOKEN": "thisissecret"]]
+    PixelaEx.update_graph("a-know", "thisissecret", "test-graph", name: "graph-name", unit: "commit", color: "shibafu", purge_cache_urls: ["https://camo.githubusercontent.com/xxx/xxxx"])
+    assert called PixelaEx.Client.put "users/a-know/graphs/test-graph", [body: %{name: "graph-name", unit: "commit", color: "shibafu", purge_cache_urls: ["https://camo.githubusercontent.com/xxx/xxxx"]}, headers: ["X-USER-TOKEN": "thisissecret"]]
   end
 
   test_with_mock "delete_graph", PixelaEx.Client,

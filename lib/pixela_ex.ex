@@ -106,8 +106,10 @@ defmodule PixelaEx do
   end
 
   def update_graph(username, token, graph_id, param) do
-    GraphFunctions.update_graph(username, token, graph_id, param)
-    |> apply
+    result =
+      GraphFunctions.update_graph(username, token, graph_id, param)
+      |> apply
+    {:ok, result}
   end
 
   def delete_graph(username, token, graph_id) do

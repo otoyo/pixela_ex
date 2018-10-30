@@ -76,17 +76,18 @@ defmodule PixelaEx.Client.GraphFunctions do
 
   ## Examples
 
-      iex> PixelaEx.Client.GraphFunctions.update_graph("a-know", "thisissecret", "test-graph", %{name: "graph-name", unit: "commit", color: "shibafu"})
-      {:put, ["users/a-know/graphs/test-graph", [body: %{name: "graph-name", unit: "commit", color: "shibafu"}, headers: ["X-USER-TOKEN": "thisissecret"]]]}
+      iex> PixelaEx.Client.GraphFunctions.update_graph("a-know", "thisissecret", "test-graph", name: "graph-name", unit: "commit", color: "shibafu", purge_cache_urls: ["https://camo.githubusercontent.com/xxx/xxxx"])
+      {:put, ["users/a-know/graphs/test-graph", [body: %{name: "graph-name", unit: "commit", color: "shibafu", purge_cache_urls: ["https://camo.githubusercontent.com/xxx/xxxx"]}, headers: ["X-USER-TOKEN": "thisissecret"]]]}
 
   """
-  @spec update_graph(PixelaEx.username, PixelaEx.token, PixelaEx.graph_id, %{required(:name) => PixelaEx.name, required(:unit) => PixelaEx.unit, required(:color) => PixelaEx.color}) :: PixelaEx.http_result
-  def update_graph(username, token, graph_id, %{name: name, unit: unit, color: color}) do
-    body = %{
-      name:   name,
-      unit:   unit,
-      color:  color
-    }
+  @spec update_graph(PixelaEx.username, PixelaEx.token, PixelaEx.graph_id, [purge_cache_urls: [String.t]]) :: PixelaEx.http_result
+  def update_graph(username, token, graph_id, param) when is_list(param) do
+    body =
+      for key <- ~w(name unit color purge_cache_urls)a,
+          value = Keyword.get(param, key),
+          into: Map.new do
+        {key, value}
+      end
 
     {:put, ["users/#{username}/graphs/#{graph_id}", [body: body, headers: ["X-USER-TOKEN": token]]]}
   end
