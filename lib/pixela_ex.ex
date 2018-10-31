@@ -158,8 +158,10 @@ defmodule PixelaEx do
   end
 
   def delete_pixel(username, token, graph_id, date) do
-    PixelFunctions.delete_pixel(username, token, graph_id, date)
-    |> apply
+    result =
+      PixelFunctions.delete_pixel(username, token, graph_id, date)
+      |> apply
+    {:ok, result}
   end
 
   #
