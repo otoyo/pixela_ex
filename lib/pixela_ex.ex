@@ -151,8 +151,10 @@ defmodule PixelaEx do
   end
 
   def decrement_pixel(username, token, graph_id) do
-    PixelFunctions.decrement_pixel(username, token, graph_id)
-    |> apply
+    result =
+      PixelFunctions.decrement_pixel(username, token, graph_id)
+      |> apply
+    {:ok, result}
   end
 
   def delete_pixel(username, token, graph_id, date) do
