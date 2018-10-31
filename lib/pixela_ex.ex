@@ -189,7 +189,9 @@ defmodule PixelaEx do
   end
 
   def delete_webhook(username, token, webhook_hash) do
-    WebhookFunctions.delete_webhook(username, token, webhook_hash)
-    |> apply
+    result =
+      WebhookFunctions.delete_webhook(username, token, webhook_hash)
+      |> apply
+    {:ok, result}
   end
 end
