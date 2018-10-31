@@ -29,10 +29,10 @@ iex> PixelaEx.create_graph("a-know", "thisissecret", "test-graph", "graph-name",
  headers: %HTTPotion.Headers{hdrs: %{...}},
  status_code: 200}}
 
-iex> PixelaEx.create_pixel("a-know", "thisissecret", "test-graph", %{date: "20181020", quantity: "5"})
-%HTTPotion.Response{body: %{"isSuccess" => true, "message" => "Success."},
+iex> PixelaEx.create_pixel("a-know", "thisissecret", "test-graph", "20181020", "5")
+{:ok, %HTTPotion.Response{body: %{"isSuccess" => true, "message" => "Success."},
  headers: %HTTPotion.Headers{hdrs: %{...}},
- status_code: 200}
+ status_code: 200}}
 
 iex> PixelaEx.increment_pixel("a-know", "thisissecret", "test-graph")
 %HTTPotion.Response{body: %{"isSuccess" => true, "message" => "Success."},

@@ -122,9 +122,11 @@ defmodule PixelaEx do
   #
   # Pixel Functions
   #
-  def create_pixel(username, token, graph_id, param) do
-    PixelFunctions.create_pixel(username, token, graph_id, param)
-    |> apply
+  def create_pixel(username, token, graph_id, date, quantity) do
+    result =
+      PixelFunctions.create_pixel(username, token, graph_id, date, quantity)
+      |> apply
+    {:ok, result}
   end
 
   def get_pixel(username, token, graph_id, date) do
