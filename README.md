@@ -35,9 +35,9 @@ iex> PixelaEx.create_pixel("a-know", "thisissecret", "test-graph", "20181020", "
  status_code: 200}}
 
 iex> PixelaEx.increment_pixel("a-know", "thisissecret", "test-graph")
-%HTTPotion.Response{body: %{"isSuccess" => true, "message" => "Success."},
+{:ok, %HTTPotion.Response{body: %{"isSuccess" => true, "message" => "Success."},
  headers: %HTTPotion.Headers{hdrs: %{...}},
- status_code: 200}
+ status_code: 200}}
 
 iex> PixelaEx.create_webhook("a-know", "thisissecret", %{graph_id: "test-graph", type: "increment"})
 %HTTPotion.Response{body: %{"hashString" => "<WebhookHashString>", "isSuccess" => true, "message" => "Success."},

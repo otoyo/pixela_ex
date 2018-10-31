@@ -144,8 +144,10 @@ defmodule PixelaEx do
   end
 
   def increment_pixel(username, token, graph_id) do
-    PixelFunctions.increment_pixel(username, token, graph_id)
-    |> apply
+    result =
+      PixelFunctions.increment_pixel(username, token, graph_id)
+      |> apply
+    {:ok, result}
   end
 
   def decrement_pixel(username, token, graph_id) do
