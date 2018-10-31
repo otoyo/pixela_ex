@@ -137,8 +137,10 @@ defmodule PixelaEx do
   end
 
   def update_pixel(username, token, graph_id, date, param) do
-    PixelFunctions.update_pixel(username, token, graph_id, date, param)
-    |> apply
+    result =
+      PixelFunctions.update_pixel(username, token, graph_id, date, param)
+      |> apply
+    {:ok, result}
   end
 
   def increment_pixel(username, token, graph_id) do

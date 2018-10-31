@@ -87,7 +87,7 @@ defmodule PixelaExTest do
     [put: fn(_url, _headers) ->
       %HTTPotion.Response{status_code: 200,
                           body: %{"message" => "Success.", "isSuccess" => true}} end] do
-    PixelaEx.update_pixel("a-know", "thisissecret", "test-graph", "20180915", %{quantity: "7"})
+    PixelaEx.update_pixel("a-know", "thisissecret", "test-graph", "20180915", "7")
     assert called PixelaEx.Client.put "users/a-know/graphs/test-graph/20180915", [body: %{quantity: "7"}, headers: ["X-USER-TOKEN": "thisissecret"]]
   end
 

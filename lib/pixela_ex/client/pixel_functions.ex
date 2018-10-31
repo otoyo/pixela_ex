@@ -41,12 +41,12 @@ defmodule PixelaEx.Client.PixelFunctions do
 
   ## Examples
 
-      iex> PixelaEx.Client.PixelFunctions.update_pixel("a-know", "thisissecret", "test-graph", "20180915", %{quantity: "7"})
+      iex> PixelaEx.Client.PixelFunctions.update_pixel("a-know", "thisissecret", "test-graph", "20180915", "7")
       {:put, ["users/a-know/graphs/test-graph/20180915", [body: %{quantity: "7"}, headers: ["X-USER-TOKEN": "thisissecret"]]]}
 
   """
-  @spec update_pixel(PixelaEx.username, PixelaEx.token, PixelaEx.graph_id, PixelaEx.date, %{required(:quantity) => PixelaEx.quantity}) :: PixelaEx.http_result
-  def update_pixel(username, token, graph_id, date, %{quantity: quantity}) do
+  @spec update_pixel(PixelaEx.username, PixelaEx.token, PixelaEx.graph_id, PixelaEx.date, PixelaEx.quantity) :: PixelaEx.http_result
+  def update_pixel(username, token, graph_id, date, quantity) do
     body = %{
       quantity: quantity
     }
