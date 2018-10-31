@@ -119,7 +119,7 @@ defmodule PixelaExTest do
     [post: fn(_url, _headers) ->
       %HTTPotion.Response{status_code: 200,
                           body: %{"hashString" => "<WebhookHashString>", "message" => "Success.", "isSuccess" => true}} end] do
-    PixelaEx.create_webhook("a-know", "thisissecret", %{graph_id: "test-graph", type: "increment"})
+    PixelaEx.create_webhook("a-know", "thisissecret", "test-graph", "increment")
     assert called PixelaEx.Client.post "users/a-know/webhooks", [body: %{graphID: "test-graph", type: "increment"}, headers: ["X-USER-TOKEN": "thisissecret"]]
   end
 

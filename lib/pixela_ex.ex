@@ -167,9 +167,11 @@ defmodule PixelaEx do
   #
   # Webhook Functions
   #
-  def create_webhook(username, token, param) do
-    WebhookFunctions.create_webhook(username, token, param)
-    |> apply
+  def create_webhook(username, token, graph_id, type) do
+    result =
+      WebhookFunctions.create_webhook(username, token, graph_id, type)
+      |> apply
+    {:ok, result}
   end
 
   def get_webhooks(username, token) do
