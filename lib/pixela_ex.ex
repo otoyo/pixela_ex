@@ -130,8 +130,10 @@ defmodule PixelaEx do
   end
 
   def get_pixel(username, token, graph_id, date) do
-    PixelFunctions.get_pixel(username, token, graph_id, date)
-    |> apply
+    result =
+      PixelFunctions.get_pixel(username, token, graph_id, date)
+      |> apply
+    {:ok, result}
   end
 
   def update_pixel(username, token, graph_id, date, param) do
