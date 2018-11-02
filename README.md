@@ -10,7 +10,7 @@ pixela\_ex can be installed by adding `pixela_ex` to your list of dependencies i
 
 ```elixir
 def deps do
-  [{:pixela_ex, git: "https://github.com/otoyo/pixela_ex", tag: "0.3.0"}]
+  [{:pixela_ex, git: "https://github.com/otoyo/pixela_ex", tag: "1.0.0"}]
 end
 ```
 

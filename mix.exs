@@ -7,7 +7,7 @@ defmodule PixelaEx.Mixfile do
 
   def project do
     [app: :pixela_ex,
-     version: "0.3.0",
+     version: "1.0.0",
      elixir: "~> 1.4",
      description: @description,
      package: package(),
