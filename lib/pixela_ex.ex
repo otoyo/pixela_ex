@@ -61,98 +61,137 @@ defmodule PixelaEx do
   #
   # User Functions
   #
-  def create_user(param) do
-    UserFunctions.create_user(param)
-    |> apply
+  def create_user(username, token, agree_terms_of_service, not_minor) do
+    result =
+      UserFunctions.create_user(username, token, agree_terms_of_service, not_minor)
+      |> apply
+    {:ok, result}
   end
 
-  def update_user(username, token, param) do
-    UserFunctions.update_user(username, token, param)
-    |> apply
+  def update_user(username, token, new_token) do
+    result =
+      UserFunctions.update_user(username, token, new_token)
+      |> apply
+    {:ok, result}
   end
 
   def delete_user(username, token) do
-    UserFunctions.delete_user(username, token)
-    |> apply
+    result =
+      UserFunctions.delete_user(username, token)
+      |> apply
+    {:ok, result}
   end
 
   # Graph Functions
   #
-  def create_graph(username, token, param) do
-    GraphFunctions.create_graph(username, token, param)
-    |> apply
+  def create_graph(username, token, id, name, unit, type, color) do
+    result =
+      GraphFunctions.create_graph(username, token, id, name, unit, type, color)
+      |> apply
+    {:ok, result}
   end
 
   def get_graphs(username, token) do
-   GraphFunctions.get_graphs(username, token)
-   |> apply
+   result =
+     GraphFunctions.get_graphs(username, token)
+     |> apply
+   {:ok, result}
   end
 
-  defdelegate graph_url(username, graph_id, param \\ %{}), to: GraphFunctions
+  def get_graph(username, graph_id, param \\ []) do
+    result =
+      GraphFunctions.get_graph(username, graph_id, param)
+      |> apply
+    {:ok, result}
+  end
 
   def update_graph(username, token, graph_id, param) do
-    GraphFunctions.update_graph(username, token, graph_id, param)
-    |> apply
+    result =
+      GraphFunctions.update_graph(username, token, graph_id, param)
+      |> apply
+    {:ok, result}
   end
 
   def delete_graph(username, token, graph_id) do
-    GraphFunctions.delete_graph(username, token, graph_id)
-    |> apply
+    result =
+      GraphFunctions.delete_graph(username, token, graph_id)
+      |> apply
+    {:ok, result}
   end
 
   #
   # Pixel Functions
   #
-  def create_pixel(username, token, graph_id, param) do
-    PixelFunctions.create_pixel(username, token, graph_id, param)
-    |> apply
+  def create_pixel(username, token, graph_id, date, quantity) do
+    result =
+      PixelFunctions.create_pixel(username, token, graph_id, date, quantity)
+      |> apply
+    {:ok, result}
   end
 
   def get_pixel(username, token, graph_id, date) do
-    PixelFunctions.get_pixel(username, token, graph_id, date)
-    |> apply
+    result =
+      PixelFunctions.get_pixel(username, token, graph_id, date)
+      |> apply
+    {:ok, result}
   end
 
   def update_pixel(username, token, graph_id, date, param) do
-    PixelFunctions.update_pixel(username, token, graph_id, date, param)
-    |> apply
+    result =
+      PixelFunctions.update_pixel(username, token, graph_id, date, param)
+      |> apply
+    {:ok, result}
   end
 
   def increment_pixel(username, token, graph_id) do
-    PixelFunctions.increment_pixel(username, token, graph_id)
-    |> apply
+    result =
+      PixelFunctions.increment_pixel(username, token, graph_id)
+      |> apply
+    {:ok, result}
   end
 
   def decrement_pixel(username, token, graph_id) do
-    PixelFunctions.decrement_pixel(username, token, graph_id)
-    |> apply
+    result =
+      PixelFunctions.decrement_pixel(username, token, graph_id)
+      |> apply
+    {:ok, result}
   end
 
   def delete_pixel(username, token, graph_id, date) do
-    PixelFunctions.delete_pixel(username, token, graph_id, date)
-    |> apply
+    result =
+      PixelFunctions.delete_pixel(username, token, graph_id, date)
+      |> apply
+    {:ok, result}
   end
 
   #
   # Webhook Functions
   #
-  def create_webhook(username, token, param) do
-    WebhookFunctions.create_webhook(username, token, param)
-    |> apply
+  def create_webhook(username, token, graph_id, type) do
+    result =
+      WebhookFunctions.create_webhook(username, token, graph_id, type)
+      |> apply
+    {:ok, result}
   end
 
   def get_webhooks(username, token) do
-    WebhookFunctions.get_webhooks(username, token)
-    |> apply
+    result =
+      WebhookFunctions.get_webhooks(username, token)
+      |> apply
+    {:ok, result}
   end
 
   def invoke_webhook(username, webhook_hash) do
-    WebhookFunctions.invoke_webhook(username, webhook_hash)
-    |> apply
+    result =
+      WebhookFunctions.invoke_webhook(username, webhook_hash)
+      |> apply
+    {:ok, result}
   end
 
   def delete_webhook(username, token, webhook_hash) do
-    WebhookFunctions.delete_webhook(username, token, webhook_hash)
-    |> apply
+    result =
+      WebhookFunctions.delete_webhook(username, token, webhook_hash)
+      |> apply
+    {:ok, result}
   end
 end

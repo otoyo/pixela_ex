@@ -19,30 +19,30 @@ end
 Some basic examples:
 
 ```elixir
-iex> PixelaEx.create_user(%{username: "a-know", token: "thisissecret", agree_terms_of_service: true, not_minor: true})
-%HTTPotion.Response{body: %{"isSuccess" => true, "message" => "Success."},
+iex> PixelaEx.create_user("a-know", "thisissecret", true, true)
+{:ok, %HTTPotion.Response{body: %{"isSuccess" => true, "message" => "Success."},
  headers: %HTTPotion.Headers{hdrs: %{...}},
- status_code: 200}
+ status_code: 200}}
 
-iex> PixelaEx.create_graph("a-know", "thisissecret", %{graph_id: "test-graph", name: "graph-name", unit: "commit", type: "int", color: "shibafu"})
-%HTTPotion.Response{body: %{"isSuccess" => true, "message" => "Success."},
- headers: %HTTPotion.Headers{hdrs:...}},
- status_code: 200}
-
-iex> PixelaEx.create_pixel("a-know", "thisissecret", "test-graph", %{date: "20181020", quantity: "5"})
-%HTTPotion.Response{body: %{"isSuccess" => true, "message" => "Success."},
+iex> PixelaEx.create_graph("a-know", "thisissecret", "test-graph", "graph-name", "commit", "int", "shibafu")
+{:ok, %HTTPotion.Response{body: %{"isSuccess" => true, "message" => "Success."},
  headers: %HTTPotion.Headers{hdrs: %{...}},
- status_code: 200}
+ status_code: 200}}
+
+iex> PixelaEx.create_pixel("a-know", "thisissecret", "test-graph", "20181020", "5")
+{:ok, %HTTPotion.Response{body: %{"isSuccess" => true, "message" => "Success."},
+ headers: %HTTPotion.Headers{hdrs: %{...}},
+ status_code: 200}}
 
 iex> PixelaEx.increment_pixel("a-know", "thisissecret", "test-graph")
-%HTTPotion.Response{body: %{"isSuccess" => true, "message" => "Success."},
+{:ok, %HTTPotion.Response{body: %{"isSuccess" => true, "message" => "Success."},
  headers: %HTTPotion.Headers{hdrs: %{...}},
- status_code: 200}
+ status_code: 200}}
 
-iex> PixelaEx.create_webhook("a-know", "thisissecret", %{graph_id: "test-graph", type: "increment"})
-%HTTPotion.Response{body: %{"hashString" => "<WebhookHashString>", "isSuccess" => true, "message" => "Success."},
+iex> PixelaEx.create_webhook("a-know", "thisissecret", "test-graph", "increment")
+{:ok %HTTPotion.Response{body: %{"hashString" => "<WebhookHashString>", "isSuccess" => true, "message" => "Success."},
  headers: %HTTPotion.Headers{hdrs: %{...}},
- status_code: 200}
+ status_code: 200}}
 ```
 
 ## Documetation

@@ -8,15 +8,15 @@ defmodule PixelaEx.Client.WebhookFunctions do
 
   ## Examples
 
-      iex> PixelaEx.Client.WebhookFunctions.create_webhook("a-know", "thisissecret", %{graph_id: "test-graph", type: "increment"})
+      iex> PixelaEx.Client.WebhookFunctions.create_webhook("a-know", "thisissecret", "test-graph", "increment")
       {:post, ["users/a-know/webhooks", [body: %{graphID: "test-graph", type: "increment"}, headers: ["X-USER-TOKEN": "thisissecret"]]]}
 
   """
-  @spec create_webhook(PixelaEx.username, PixelaEx.token, %{required(:graph_id) => PixelaEx.graph_id, required(:type) => PixelaEx.countup_type}) :: PixelaEx.http_result
-  def create_webhook(username, token, %{graph_id: graph_id, type: countup_type}) do
+  @spec create_webhook(PixelaEx.username, PixelaEx.token, PixelaEx.graph_id, PixelaEx.countup_type) :: PixelaEx.http_result
+  def create_webhook(username, token, graph_id, type) do
     body = %{
       graphID:  graph_id,
-      type:     countup_type
+      type:     type
     }
 
     {:post, ["users/#{username}/webhooks", [body: body, headers: ["X-USER-TOKEN": token]]]}

@@ -8,12 +8,12 @@ defmodule PixelaEx.Client.PixelFunctions do
 
   ## Examples
 
-      iex> PixelaEx.Client.PixelFunctions.create_pixel("a-know", "thisissecret", "test-graph", %{date: "20180915", quantity: "5"})
+      iex> PixelaEx.Client.PixelFunctions.create_pixel("a-know", "thisissecret", "test-graph", "20180915", "5")
       {:post, ["users/a-know/graphs/test-graph", [body: %{date: "20180915", quantity: "5"}, headers: ["X-USER-TOKEN": "thisissecret"]]]}
 
   """
-  @spec create_pixel(PixelaEx.username, PixelaEx.token, PixelaEx.graph_id, %{required(:date) => PixelaEx.date, required(:quantity) => PixelaEx.quantity}) :: PixelaEx.http_result
-  def create_pixel(username, token, graph_id, %{date: date, quantity: quantity}) do
+  @spec create_pixel(PixelaEx.username, PixelaEx.token, PixelaEx.graph_id, PixelaEx.date, PixelaEx.quantity) :: PixelaEx.http_result
+  def create_pixel(username, token, graph_id, date, quantity) do
     body = %{
       date: date,
       quantity: quantity
@@ -41,12 +41,12 @@ defmodule PixelaEx.Client.PixelFunctions do
 
   ## Examples
 
-      iex> PixelaEx.Client.PixelFunctions.update_pixel("a-know", "thisissecret", "test-graph", "20180915", %{quantity: "7"})
+      iex> PixelaEx.Client.PixelFunctions.update_pixel("a-know", "thisissecret", "test-graph", "20180915", "7")
       {:put, ["users/a-know/graphs/test-graph/20180915", [body: %{quantity: "7"}, headers: ["X-USER-TOKEN": "thisissecret"]]]}
 
   """
-  @spec update_pixel(PixelaEx.username, PixelaEx.token, PixelaEx.graph_id, PixelaEx.date, %{required(:quantity) => PixelaEx.quantity}) :: PixelaEx.http_result
-  def update_pixel(username, token, graph_id, date, %{quantity: quantity}) do
+  @spec update_pixel(PixelaEx.username, PixelaEx.token, PixelaEx.graph_id, PixelaEx.date, PixelaEx.quantity) :: PixelaEx.http_result
+  def update_pixel(username, token, graph_id, date, quantity) do
     body = %{
       quantity: quantity
     }
