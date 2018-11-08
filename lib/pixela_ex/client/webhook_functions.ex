@@ -4,7 +4,6 @@ defmodule PixelaEx.Client.WebhookFunctions do
   """
 
   @doc """
-  Create a new Webhook.
 
   ## Examples
 
@@ -12,8 +11,6 @@ defmodule PixelaEx.Client.WebhookFunctions do
       {:post, ["users/a-know/webhooks", [body: %{graphID: "test-graph", type: "increment"}, headers: ["X-USER-TOKEN": "thisissecret"]]]}
 
   """
-  @spec create_webhook(PixelaEx.username(), PixelaEx.token(), PixelaEx.graph_id(), PixelaEx.countup_type()) ::
-          PixelaEx.http_result()
   def create_webhook(username, token, graph_id, type) do
     body = %{
       graphID: graph_id,

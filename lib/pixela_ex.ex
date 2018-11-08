@@ -254,6 +254,12 @@ defmodule PixelaEx do
   #
   # Webhook Functions
   #
+
+  @doc """
+  Create a new Webhook.
+  """
+  @spec create_webhook(PixelaEx.username(), PixelaEx.token(), PixelaEx.graph_id(), PixelaEx.countup_type()) ::
+          PixelaEx.http_result()
   def create_webhook(username, token, graph_id, type) do
     result =
       WebhookFunctions.create_webhook(username, token, graph_id, type)
