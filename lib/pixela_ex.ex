@@ -75,6 +75,10 @@ defmodule PixelaEx do
     {:ok, result}
   end
 
+  @doc """
+  Updates the authentication token for the specified user.
+  """
+  @spec update_user(PixelaEx.username(), PixelaEx.token(), PixelaEx.new_token()) :: PixelaEx.http_result()
   def update_user(username, token, new_token) do
     result =
       UserFunctions.update_user(username, token, new_token)

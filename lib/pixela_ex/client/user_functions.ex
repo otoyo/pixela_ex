@@ -23,7 +23,6 @@ defmodule PixelaEx.Client.UserFunctions do
   end
 
   @doc """
-  Updates the authentication token for the specified user.
 
   ## Examples
 
@@ -31,7 +30,6 @@ defmodule PixelaEx.Client.UserFunctions do
       {:put, ["users/a-know", [body: %{new_token: "thisissecret"}, headers: ["X-USER-TOKEN": "thisissecret"]]]}
 
   """
-  @spec update_user(PixelaEx.username(), PixelaEx.token(), PixelaEx.new_token()) :: PixelaEx.http_result()
   def update_user(username, token, new_token) do
     body = %{
       new_token: new_token
