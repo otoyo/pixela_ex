@@ -189,6 +189,10 @@ defmodule PixelaEx do
     {:ok, result}
   end
 
+  @doc """
+  Get registered quantity as "Pixel".
+  """
+  @spec get_pixel(PixelaEx.username(), PixelaEx.token(), PixelaEx.graph_id(), PixelaEx.date()) :: PixelaEx.http_result()
   def get_pixel(username, token, graph_id, date) do
     result =
       PixelFunctions.get_pixel(username, token, graph_id, date)

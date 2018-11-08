@@ -21,7 +21,6 @@ defmodule PixelaEx.Client.PixelFunctions do
   end
 
   @doc """
-  Get registered quantity as "Pixel".
 
   ## Examples
 
@@ -29,7 +28,6 @@ defmodule PixelaEx.Client.PixelFunctions do
       {:get, ["users/a-know/graphs/test-graph/20180915", [headers: ["X-USER-TOKEN": "thisissecret"]]]}
 
   """
-  @spec get_pixel(PixelaEx.username(), PixelaEx.token(), PixelaEx.graph_id(), PixelaEx.date()) :: PixelaEx.http_result()
   def get_pixel(username, token, graph_id, date) do
     {:get, ["users/#{username}/graphs/#{graph_id}/#{date}", [headers: ["X-USER-TOKEN": token]]]}
   end
