@@ -1,7 +1,7 @@
 defmodule PixelaEx.Client.WebhookFunctions do
-  @moduledoc """
-  API Webhook Functions for Pixela.
-  """
+  @moduledoc false
+
+  # API Webhook Functions for Pixela.
 
   @doc """
 
