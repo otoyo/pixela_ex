@@ -135,6 +135,10 @@ defmodule PixelaEx do
     {:ok, result}
   end
 
+  @doc """
+  Based on the registered information, express the graph in SVG format diagram.
+  """
+  @spec get_graph(PixelaEx.username(), PixelaEx.graph_id(), date: PixelaEx.date(), mode: PixelaEx.mode()) :: String.t()
   def get_graph(username, graph_id, param \\ []) do
     result =
       GraphFunctions.get_graph(username, graph_id, param)

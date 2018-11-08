@@ -36,7 +36,6 @@ defmodule PixelaEx.Client.GraphFunctions do
   end
 
   @doc """
-  Based on the registered information, express the graph in SVG format diagram.
 
   ## Examples
 
@@ -47,7 +46,6 @@ defmodule PixelaEx.Client.GraphFunctions do
       {:get, ["users/a-know/graphs/test-graph?date=20180331&mode=short", []]}
 
   """
-  @spec get_graph(PixelaEx.username(), PixelaEx.graph_id(), date: PixelaEx.date(), mode: PixelaEx.mode()) :: String.t()
   def get_graph(username, graph_id, param) when is_list(param) do
     query =
       ~w(date mode)a
