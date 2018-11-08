@@ -66,7 +66,6 @@ defmodule PixelaEx.Client.GraphFunctions do
   end
 
   @doc """
-  Update predefined pixelation graph definitions.
 
   ## Examples
 
@@ -74,8 +73,6 @@ defmodule PixelaEx.Client.GraphFunctions do
       {:put, ["users/a-know/graphs/test-graph", [body: %{name: "graph-name", unit: "commit", color: "shibafu", purge_cache_urls: ["https://camo.githubusercontent.com/xxx/xxxx"]}, headers: ["X-USER-TOKEN": "thisissecret"]]]}
 
   """
-  @spec update_graph(PixelaEx.username(), PixelaEx.token(), PixelaEx.graph_id(), purge_cache_urls: [String.t()]) ::
-          PixelaEx.http_result()
   def update_graph(username, token, graph_id, param) when is_list(param) do
     body =
       for key <- ~w(name unit color purge_cache_urls)a,
