@@ -61,6 +61,12 @@ defmodule PixelaEx do
   #
   # User Functions
   #
+
+  @doc """
+  Create a new Pixela user.
+  """
+  @spec create_user(PixelaEx.username(), PixelaEx.token(), PixelaEx.agree_terms_of_service(), PixelaEx.not_minor()) ::
+          PixelaEx.http_result()
   def create_user(username, token, agree_terms_of_service, not_minor) do
     result =
       UserFunctions.create_user(username, token, agree_terms_of_service, not_minor)
