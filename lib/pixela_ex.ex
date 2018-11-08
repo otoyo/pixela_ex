@@ -226,6 +226,10 @@ defmodule PixelaEx do
     {:ok, result}
   end
 
+  @doc """
+  Decrement quantity "Pixel" of the day (UTC).
+  """
+  @spec decrement_pixel(PixelaEx.username(), PixelaEx.token(), PixelaEx.graph_id()) :: PixelaEx.http_result()
   def decrement_pixel(username, token, graph_id) do
     result =
       PixelFunctions.decrement_pixel(username, token, graph_id)
