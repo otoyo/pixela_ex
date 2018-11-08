@@ -33,7 +33,6 @@ defmodule PixelaEx.Client.WebhookFunctions do
   end
 
   @doc """
-  Invoke the webhook registered in advance.
 
   ## Examples
 
@@ -41,7 +40,6 @@ defmodule PixelaEx.Client.WebhookFunctions do
       {:post, ["users/a-know/webhooks/<webhookHash>", [headers: ["Content-Length": 0]]]}
 
   """
-  @spec invoke_webhook(PixelaEx.username(), PixelaEx.webhook_hash()) :: PixelaEx.http_result()
   def invoke_webhook(username, webhook_hash) do
     {:post, ["users/#{username}/webhooks/#{webhook_hash}", [headers: ["Content-Length": 0]]]}
   end

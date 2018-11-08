@@ -280,6 +280,10 @@ defmodule PixelaEx do
     {:ok, result}
   end
 
+  @doc """
+  Invoke the webhook registered in advance.
+  """
+  @spec invoke_webhook(PixelaEx.username(), PixelaEx.webhook_hash()) :: PixelaEx.http_result()
   def invoke_webhook(username, webhook_hash) do
     result =
       WebhookFunctions.invoke_webhook(username, webhook_hash)
