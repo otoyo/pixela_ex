@@ -87,6 +87,10 @@ defmodule PixelaEx do
     {:ok, result}
   end
 
+  @doc """
+  Deletes the specified registered user.
+  """
+  @spec delete_user(PixelaEx.username(), PixelaEx.token()) :: PixelaEx.http_result()
   def delete_user(username, token) do
     result =
       UserFunctions.delete_user(username, token)

@@ -39,7 +39,6 @@ defmodule PixelaEx.Client.UserFunctions do
   end
 
   @doc """
-  Deletes the specified registered user.
 
   ## Examples
 
@@ -47,7 +46,6 @@ defmodule PixelaEx.Client.UserFunctions do
       {:delete, ["users/a-know", [headers: ["X-USER-TOKEN": "thisissecret"]]]}
 
   """
-  @spec delete_user(PixelaEx.username(), PixelaEx.token()) :: PixelaEx.http_result()
   def delete_user(username, token) do
     {:delete, ["users/#{username}", [headers: ["X-USER-TOKEN": token]]]}
   end
