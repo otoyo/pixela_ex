@@ -238,6 +238,11 @@ defmodule PixelaEx do
     {:ok, result}
   end
 
+  @doc """
+  Delete the registered "Pixel".
+  """
+  @spec delete_pixel(PixelaEx.username(), PixelaEx.token(), PixelaEx.graph_id(), PixelaEx.date()) ::
+          PixelaEx.http_result()
   def delete_pixel(username, token, graph_id, date) do
     result =
       PixelFunctions.delete_pixel(username, token, graph_id, date)

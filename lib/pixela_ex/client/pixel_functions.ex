@@ -73,7 +73,6 @@ defmodule PixelaEx.Client.PixelFunctions do
   end
 
   @doc """
-  Delete the registered "Pixel".
 
   ## Examples
 
@@ -81,8 +80,6 @@ defmodule PixelaEx.Client.PixelFunctions do
       {:delete, ["users/a-know/graphs/test-graph/20180915", [headers: ["X-USER-TOKEN": "thisissecret"]]]}
 
   """
-  @spec delete_pixel(PixelaEx.username(), PixelaEx.token(), PixelaEx.graph_id(), PixelaEx.date()) ::
-          PixelaEx.http_result()
   def delete_pixel(username, token, graph_id, date) do
     {:delete, ["users/#{username}/graphs/#{graph_id}/#{date}", [headers: ["X-USER-TOKEN": token]]]}
   end
