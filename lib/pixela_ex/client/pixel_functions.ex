@@ -33,7 +33,6 @@ defmodule PixelaEx.Client.PixelFunctions do
   end
 
   @doc """
-  Update the quantity already registered as a "Pixel".
 
   ## Examples
 
@@ -41,8 +40,6 @@ defmodule PixelaEx.Client.PixelFunctions do
       {:put, ["users/a-know/graphs/test-graph/20180915", [body: %{quantity: "7"}, headers: ["X-USER-TOKEN": "thisissecret"]]]}
 
   """
-  @spec update_pixel(PixelaEx.username(), PixelaEx.token(), PixelaEx.graph_id(), PixelaEx.date(), PixelaEx.quantity()) ::
-          PixelaEx.http_result()
   def update_pixel(username, token, graph_id, date, quantity) do
     body = %{
       quantity: quantity

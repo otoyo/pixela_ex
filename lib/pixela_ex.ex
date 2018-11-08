@@ -201,6 +201,11 @@ defmodule PixelaEx do
     {:ok, result}
   end
 
+  @doc """
+  Update the quantity already registered as a "Pixel".
+  """
+  @spec update_pixel(PixelaEx.username(), PixelaEx.token(), PixelaEx.graph_id(), PixelaEx.date(), PixelaEx.quantity()) ::
+          PixelaEx.http_result()
   def update_pixel(username, token, graph_id, date, param) do
     result =
       PixelFunctions.update_pixel(username, token, graph_id, date, param)
