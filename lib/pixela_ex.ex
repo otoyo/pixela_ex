@@ -175,6 +175,12 @@ defmodule PixelaEx do
   #
   # Pixel Functions
   #
+
+  @doc """
+  It records the quantity of the specified date as a "Pixel".
+  """
+  @spec create_pixel(PixelaEx.username(), PixelaEx.token(), PixelaEx.graph_id(), PixelaEx.date(), PixelaEx.quantity()) ::
+          PixelaEx.http_result()
   def create_pixel(username, token, graph_id, date, quantity) do
     result =
       PixelFunctions.create_pixel(username, token, graph_id, date, quantity)

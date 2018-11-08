@@ -4,7 +4,6 @@ defmodule PixelaEx.Client.PixelFunctions do
   """
 
   @doc """
-  It records the quantity of the specified date as a "Pixel".
 
   ## Examples
 
@@ -12,8 +11,6 @@ defmodule PixelaEx.Client.PixelFunctions do
       {:post, ["users/a-know/graphs/test-graph", [body: %{date: "20180915", quantity: "5"}, headers: ["X-USER-TOKEN": "thisissecret"]]]}
 
   """
-  @spec create_pixel(PixelaEx.username(), PixelaEx.token(), PixelaEx.graph_id(), PixelaEx.date(), PixelaEx.quantity()) ::
-          PixelaEx.http_result()
   def create_pixel(username, token, graph_id, date, quantity) do
     body = %{
       date: date,
