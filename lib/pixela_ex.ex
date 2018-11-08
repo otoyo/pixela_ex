@@ -214,6 +214,10 @@ defmodule PixelaEx do
     {:ok, result}
   end
 
+  @doc """
+  Increment quantity "Pixel" of the day (UTC).
+  """
+  @spec increment_pixel(PixelaEx.username(), PixelaEx.token(), PixelaEx.graph_id()) :: PixelaEx.http_result()
   def increment_pixel(username, token, graph_id) do
     result =
       PixelFunctions.increment_pixel(username, token, graph_id)

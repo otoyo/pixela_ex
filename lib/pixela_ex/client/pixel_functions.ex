@@ -49,7 +49,6 @@ defmodule PixelaEx.Client.PixelFunctions do
   end
 
   @doc """
-  Increment quantity "Pixel" of the day (UTC).
 
   ## Examples
 
@@ -57,7 +56,6 @@ defmodule PixelaEx.Client.PixelFunctions do
       {:put, ["users/a-know/graphs/test-graph/increment", [headers: ["X-USER-TOKEN": "thisissecret", "Content-Length": 0]]]}
 
   """
-  @spec increment_pixel(PixelaEx.username(), PixelaEx.token(), PixelaEx.graph_id()) :: PixelaEx.http_result()
   def increment_pixel(username, token, graph_id) do
     {:put, ["users/#{username}/graphs/#{graph_id}/increment", [headers: ["X-USER-TOKEN": token, "Content-Length": 0]]]}
   end
