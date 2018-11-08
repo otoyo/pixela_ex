@@ -18,24 +18,26 @@ defmodule PixelaEx.Client do
   end
 
   def process_request_body(""), do: ""
+
   def process_request_body(body) when is_map(body) do
     body
     |> Enum.reduce(%{}, fn {key, val}, acc ->
       acc |> Map.put(_format_key(key), _format_value(val))
     end)
-    |> Poison.encode!
+    |> Poison.encode!()
   end
 
   def process_response_body(body) do
-    body |> Poison.decode!
+    body |> Poison.decode!()
   end
 
   def _format_key(key) when is_atom(key) do
     key |> Atom.to_string() |> _format_key()
   end
+
   def _format_key(key), do: key
 
-  def _format_value(true),  do: "yes"
+  def _format_value(true), do: "yes"
   def _format_value(false), do: "no"
   def _format_value(value), do: value
 end

@@ -18,9 +18,7 @@ defmodule PixelaEx.MixProject do
   end
 
   defp package do
-    [maintainers: ["otoyo"],
-     licenses: ["CC0-1.0"],
-     links: %{"Github" => "https://github.com/otoyo/pixela_ex"}]
+    [maintainers: ["otoyo"], licenses: ["CC0-1.0"], links: %{"Github" => "https://github.com/otoyo/pixela_ex"}]
   end
 
   # Run "mix help compile.app" to learn about applications.

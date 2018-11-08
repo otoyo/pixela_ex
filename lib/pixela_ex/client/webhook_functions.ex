@@ -12,11 +12,12 @@ defmodule PixelaEx.Client.WebhookFunctions do
       {:post, ["users/a-know/webhooks", [body: %{graphID: "test-graph", type: "increment"}, headers: ["X-USER-TOKEN": "thisissecret"]]]}
 
   """
-  @spec create_webhook(PixelaEx.username, PixelaEx.token, PixelaEx.graph_id, PixelaEx.countup_type) :: PixelaEx.http_result
+  @spec create_webhook(PixelaEx.username(), PixelaEx.token(), PixelaEx.graph_id(), PixelaEx.countup_type()) ::
+          PixelaEx.http_result()
   def create_webhook(username, token, graph_id, type) do
     body = %{
-      graphID:  graph_id,
-      type:     type
+      graphID: graph_id,
+      type: type
     }
 
     {:post, ["users/#{username}/webhooks", [body: body, headers: ["X-USER-TOKEN": token]]]}
@@ -31,7 +32,7 @@ defmodule PixelaEx.Client.WebhookFunctions do
       {:get, ["users/a-know/webhooks", [headers: ["X-USER-TOKEN": "thisissecret"]]]}
 
   """
-  @spec get_webhooks(PixelaEx.username, PixelaEx.token) :: PixelaEx.http_result
+  @spec get_webhooks(PixelaEx.username(), PixelaEx.token()) :: PixelaEx.http_result()
   def get_webhooks(username, token) do
     {:get, ["users/#{username}/webhooks", [headers: ["X-USER-TOKEN": token]]]}
   end
@@ -45,7 +46,7 @@ defmodule PixelaEx.Client.WebhookFunctions do
       {:post, ["users/a-know/webhooks/<webhookHash>", [headers: ["Content-Length": 0]]]}
 
   """
-  @spec invoke_webhook(PixelaEx.username, PixelaEx.webhook_hash) :: PixelaEx.http_result
+  @spec invoke_webhook(PixelaEx.username(), PixelaEx.webhook_hash()) :: PixelaEx.http_result()
   def invoke_webhook(username, webhook_hash) do
     {:post, ["users/#{username}/webhooks/#{webhook_hash}", [headers: ["Content-Length": 0]]]}
   end
@@ -59,7 +60,7 @@ defmodule PixelaEx.Client.WebhookFunctions do
       {:delete, ["users/a-know/webhooks/<webhookHash>", [headers: ["X-USER-TOKEN": "thisissecret"]]]}
 
   """
-  @spec delete_webhook(PixelaEx.username, PixelaEx.token, PixelaEx.webhook_hash) :: PixelaEx.http_result
+  @spec delete_webhook(PixelaEx.username(), PixelaEx.token(), PixelaEx.webhook_hash()) :: PixelaEx.http_result()
   def delete_webhook(username, token, webhook_hash) do
     {:delete, ["users/#{username}/webhooks/#{webhook_hash}", [headers: ["X-USER-TOKEN": token]]]}
   end
