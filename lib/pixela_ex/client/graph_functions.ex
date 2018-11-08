@@ -4,7 +4,6 @@ defmodule PixelaEx.Client.GraphFunctions do
   """
 
   @doc """
-  Create a new pixelation graph definition.
 
   ## Examples
 
@@ -12,15 +11,6 @@ defmodule PixelaEx.Client.GraphFunctions do
       {:post, ["users/a-know/graphs", [body: %{id: "test-graph", name: "graph-name", unit: "commit", type: "int", color: "shibafu"}, headers: ["X-USER-TOKEN": "thisissecret"]]]}
 
   """
-  @spec create_graph(
-          PixelaEx.username(),
-          PixelaEx.token(),
-          PixelaEx.graph_id(),
-          PixelaEx.name(),
-          PixelaEx.unit(),
-          PixelaEx.quantity_type(),
-          PixelaEx.color()
-        ) :: PixelaEx.http_result()
   def create_graph(username, token, graph_id, name, unit, type, color) do
     body = %{
       id: graph_id,

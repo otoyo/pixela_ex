@@ -99,8 +99,22 @@ defmodule PixelaEx do
     {:ok, result}
   end
 
+  #
   # Graph Functions
   #
+
+  @doc """
+  Create a new pixelation graph definition.
+  """
+  @spec create_graph(
+          PixelaEx.username(),
+          PixelaEx.token(),
+          PixelaEx.graph_id(),
+          PixelaEx.name(),
+          PixelaEx.unit(),
+          PixelaEx.quantity_type(),
+          PixelaEx.color()
+        ) :: PixelaEx.http_result()
   def create_graph(username, token, id, name, unit, type, color) do
     result =
       GraphFunctions.create_graph(username, token, id, name, unit, type, color)
