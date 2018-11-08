@@ -24,7 +24,6 @@ defmodule PixelaEx.Client.GraphFunctions do
   end
 
   @doc """
-  Get all predefined pixelation graph definitions.
 
   ## Examples
 
@@ -32,7 +31,6 @@ defmodule PixelaEx.Client.GraphFunctions do
       {:get, ["users/a-know/graphs", [headers: ["X-USER-TOKEN": "thisissecret"]]]}
 
   """
-  @spec get_graphs(PixelaEx.username(), PixelaEx.token()) :: PixelaEx.http_result()
   def get_graphs(username, token) do
     {:get, ["users/#{username}/graphs", [headers: ["X-USER-TOKEN": token]]]}
   end

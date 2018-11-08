@@ -123,6 +123,10 @@ defmodule PixelaEx do
     {:ok, result}
   end
 
+  @doc """
+  Get all predefined pixelation graph definitions.
+  """
+  @spec get_graphs(PixelaEx.username(), PixelaEx.token()) :: PixelaEx.http_result()
   def get_graphs(username, token) do
     result =
       GraphFunctions.get_graphs(username, token)
