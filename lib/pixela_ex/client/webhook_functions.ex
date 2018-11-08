@@ -45,7 +45,6 @@ defmodule PixelaEx.Client.WebhookFunctions do
   end
 
   @doc """
-  Delete the registered Webhook.
 
   ## Examples
 
@@ -53,7 +52,6 @@ defmodule PixelaEx.Client.WebhookFunctions do
       {:delete, ["users/a-know/webhooks/<webhookHash>", [headers: ["X-USER-TOKEN": "thisissecret"]]]}
 
   """
-  @spec delete_webhook(PixelaEx.username(), PixelaEx.token(), PixelaEx.webhook_hash()) :: PixelaEx.http_result()
   def delete_webhook(username, token, webhook_hash) do
     {:delete, ["users/#{username}/webhooks/#{webhook_hash}", [headers: ["X-USER-TOKEN": token]]]}
   end

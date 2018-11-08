@@ -292,6 +292,10 @@ defmodule PixelaEx do
     {:ok, result}
   end
 
+  @doc """
+  Delete the registered Webhook.
+  """
+  @spec delete_webhook(PixelaEx.username(), PixelaEx.token(), PixelaEx.webhook_hash()) :: PixelaEx.http_result()
   def delete_webhook(username, token, webhook_hash) do
     result =
       WebhookFunctions.delete_webhook(username, token, webhook_hash)
