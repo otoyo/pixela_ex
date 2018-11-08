@@ -85,7 +85,6 @@ defmodule PixelaEx.Client.GraphFunctions do
   end
 
   @doc """
-  Delete the predefined pixelation graph definition.
 
   ## Examples
 
@@ -93,7 +92,6 @@ defmodule PixelaEx.Client.GraphFunctions do
       {:delete, ["users/a-know/graphs/test-graph", [headers: ["X-USER-TOKEN": "thisissecret"]]]}
 
   """
-  @spec delete_graph(PixelaEx.username(), PixelaEx.token(), PixelaEx.graph_id()) :: PixelaEx.http_result()
   def delete_graph(username, token, graph_id) do
     {:delete, ["users/#{username}/graphs/#{graph_id}", [headers: ["X-USER-TOKEN": token]]]}
   end

@@ -160,6 +160,10 @@ defmodule PixelaEx do
     {:ok, result}
   end
 
+  @doc """
+  Delete the predefined pixelation graph definition.
+  """
+  @spec delete_graph(PixelaEx.username(), PixelaEx.token(), PixelaEx.graph_id()) :: PixelaEx.http_result()
   def delete_graph(username, token, graph_id) do
     result =
       GraphFunctions.delete_graph(username, token, graph_id)
