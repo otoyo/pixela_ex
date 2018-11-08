@@ -36,7 +36,8 @@ defmodule PixelaEx.MixProject do
     [
       {:httpotion, git: "https://github.com/otoyo/httpotion", branch: "fix-ibrowse4.4.0"},
       {:mock, "~> 0.3.0", only: :test},
-      {:poison, "~> 3.1"}
+      {:poison, "~> 3.1"},
+      {:ex_doc, "~> 0.19", only: :dev, runtime: false}
     ]
   end
 end
