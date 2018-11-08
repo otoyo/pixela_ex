@@ -1,7 +1,7 @@
 defmodule PixelaEx.Client.UserFunctions do
-  @moduledoc """
-  API User Functions for Pixela.
-  """
+  @moduledoc false
+
+  # API User Functions for Pixela
 
   @doc """
 
