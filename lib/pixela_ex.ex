@@ -268,6 +268,10 @@ defmodule PixelaEx do
     {:ok, result}
   end
 
+  @doc """
+  Get all predefined webhooks definitions.
+  """
+  @spec get_webhooks(PixelaEx.username(), PixelaEx.token()) :: PixelaEx.http_result()
   def get_webhooks(username, token) do
     result =
       WebhookFunctions.get_webhooks(username, token)

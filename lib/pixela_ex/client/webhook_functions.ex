@@ -21,7 +21,6 @@ defmodule PixelaEx.Client.WebhookFunctions do
   end
 
   @doc """
-  Get all predefined webhooks definitions.
 
   ## Examples
 
@@ -29,7 +28,6 @@ defmodule PixelaEx.Client.WebhookFunctions do
       {:get, ["users/a-know/webhooks", [headers: ["X-USER-TOKEN": "thisissecret"]]]}
 
   """
-  @spec get_webhooks(PixelaEx.username(), PixelaEx.token()) :: PixelaEx.http_result()
   def get_webhooks(username, token) do
     {:get, ["users/#{username}/webhooks", [headers: ["X-USER-TOKEN": token]]]}
   end
