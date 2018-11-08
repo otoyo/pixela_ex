@@ -8,16 +8,32 @@ defmodule PixelaEx do
   alias PixelaEx.Client.PixelFunctions
   alias PixelaEx.Client.WebhookFunctions
 
-  @typedoc "User name for Pixela"
+  @typedoc """
+  User name for Pixela
+
+  Validation rule: `[a-z][a-z0-9-]{1,32}`
+  """
   @type username :: String.t()
 
-  @typedoc "A token string used to authenticate as a user to be created"
+  @typedoc """
+  A token string used to authenticate as a user to be created
+
+  The token string is hashed and saved.
+
+  Validation rule: `[ -~]{8,128}`
+  """
   @type token :: String.t()
 
-  @typedoc "Whether you agree to the terms of service"
+  @typedoc """
+  Whether you agree to the terms of service
+
+  Please see: [Terms of service - Japanese version](https://github.com/a-know/Pixela/wiki/%E5%88%A9%E7%94%A8%E8%A6%8F%E7%B4%84%EF%BC%88Terms-of-Service-Japanese-Version%EF%BC%89) / [Terms of service - English version](https://github.com/a-know/Pixela/wiki/Terms-of-Service)
+  """
   @type agree_terms_of_service :: boolean()
 
-  @typedoc "Whether you are not a minor or if you are a minor and you have the parental consent of using Pixela"
+  @typedoc """
+  Whether you are not a minor or if you are a minor and you have the parental consent of using Pixela
+  """
   @type not_minor :: boolean()
 
   @typedoc "A new authentication token"
@@ -53,8 +69,10 @@ defmodule PixelaEx do
   @typedoc "The hash string specifying the webhook"
   @type webhook_hash :: String.t()
 
-  @typedoc "HTTP response from HTTPotion"
-  @type http_result :: HTTPotion.Response.t() | %HTTPotion.AsyncResponse{} | %HTTPotion.ErrorResponse{}
+  @typedoc """
+  HTTP response from HTTPotion
+  """
+  @type http_result :: {:ok, HTTPotion.Response.t()} | {:ok, %HTTPotion.AsyncResponse{}} | {:ok, %HTTPotion.ErrorResponse{}}
 
   @doc false
   def apply({f, a}), do: apply(PixelaEx.Client, f, a)
@@ -65,9 +83,10 @@ defmodule PixelaEx do
 
   @doc """
   Create a new Pixela user.
+
+  See also [Create a User](https://docs.pixe.la/#/post-user)
   """
-  @spec create_user(PixelaEx.username(), PixelaEx.token(), PixelaEx.agree_terms_of_service(), PixelaEx.not_minor()) ::
-          PixelaEx.http_result()
+  @spec create_user(username(), token(), agree_terms_of_service(), not_minor()) :: http_result()
   def create_user(username, token, agree_terms_of_service, not_minor) do
     result =
       UserFunctions.create_user(username, token, agree_terms_of_service, not_minor)
