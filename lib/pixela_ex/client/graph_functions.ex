@@ -1,7 +1,7 @@
 defmodule PixelaEx.Client.GraphFunctions do
-  @moduledoc """
-  API Graph Functions for Pixela.
-  """
+  @moduledoc false
+
+  # API Graph Functions for Pixela.
 
   @doc """
 
