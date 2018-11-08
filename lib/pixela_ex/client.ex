@@ -1,7 +1,7 @@
 defmodule PixelaEx.Client do
-  @moduledoc """
-  HTTP Client for Pixela API.
-  """
+  @moduledoc false
+
+  # HTTP Client for Pixela API.
 
   use HTTPotion.Base
 
