@@ -56,6 +56,7 @@ defmodule PixelaEx do
   @typedoc "HTTP response from HTTPotion"
   @type http_result :: HTTPotion.Response.t() | %HTTPotion.AsyncResponse{} | %HTTPotion.ErrorResponse{}
 
+  @doc false
   def apply({f, a}), do: apply(PixelaEx.Client, f, a)
 
   #
