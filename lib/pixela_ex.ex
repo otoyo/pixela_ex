@@ -36,7 +36,13 @@ defmodule PixelaEx do
   """
   @type not_minor :: boolean()
 
-  @typedoc "A new authentication token"
+  @typedoc """
+  A new authentication token
+
+  The token string is hashed and saved.
+
+  Validation rule: [ -~]{8,128}
+  """
   @type new_token :: String.t()
 
   @typedoc "An ID for identifying the pixelation graph"
@@ -97,8 +103,10 @@ defmodule PixelaEx do
 
   @doc """
   Updates the authentication token for the specified user.
+
+  See also [Update a User](https://docs.pixe.la/#/put-user)
   """
-  @spec update_user(PixelaEx.username(), PixelaEx.token(), PixelaEx.new_token()) :: PixelaEx.http_result()
+  @spec update_user(username(), token(), new_token()) :: http_result()
   def update_user(username, token, new_token) do
     result =
       UserFunctions.update_user(username, token, new_token)
