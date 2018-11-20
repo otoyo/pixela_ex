@@ -225,8 +225,10 @@ defmodule PixelaEx do
 
   @doc """
   Delete the predefined pixelation graph definition.
+
+  See also [Delete a graph](https://docs.pixe.la/#/delete-graph)
   """
-  @spec delete_graph(PixelaEx.username(), PixelaEx.token(), PixelaEx.graph_id()) :: PixelaEx.http_result()
+  @spec delete_graph(username(), token(), graph_id()) :: http_result()
   def delete_graph(username, token, graph_id) do
     result =
       GraphFunctions.delete_graph(username, token, graph_id)
