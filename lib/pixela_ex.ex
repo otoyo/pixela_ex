@@ -175,8 +175,10 @@ defmodule PixelaEx do
 
   @doc """
   Get all predefined pixelation graph definitions.
+
+  See also [Get graph definitions](https://docs.pixe.la/#/get-graph)
   """
-  @spec get_graphs(PixelaEx.username(), PixelaEx.token()) :: PixelaEx.http_result()
+  @spec get_graphs(username(), token()) :: http_result()
   def get_graphs(username, token) do
     result =
       GraphFunctions.get_graphs(username, token)
