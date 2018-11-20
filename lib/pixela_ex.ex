@@ -45,22 +45,40 @@ defmodule PixelaEx do
   """
   @type new_token :: String.t()
 
-  @typedoc "An ID for identifying the pixelation graph"
+  @typedoc """
+  An ID for identifying the pixelation graph
+
+  Validation rule: ^[a-z][a-z0-9-]{1,16}
+  """
   @type graph_id :: String.t()
 
-  @typedoc "the name of the pixelation graph"
+  @typedoc """
+  The name of the pixelation graph
+  """
   @type name :: String.t()
 
-  @typedoc "A unit of the quantity recorded in the pixelation graph. Ex. commit, kilogram, calory."
+  @typedoc """
+  A unit of the quantity recorded in the pixelation graph
+
+  Ex. commit, kilogram, calory.
+  """
   @type unit :: String.t()
 
-  @typedoc "The type of quantity to be handled in the graph. Only `int` or `float` are supported."
+  @typedoc """
+  The type of quantity to be handled in the graph
+
+  Only `int` or `float` are supported.
+  """
   @type quantity_type :: String.t()
 
   @typedoc "The behavior when the Webhook is invoked. Only `increment` or `decrement` are supported."
   @type countup_type :: String.t()
 
-  @typedoc "The display color of the pixel in the pixelation graph. `shibafu`, `momiji`, `sora`, `ichou`, `ajisai` and `kuro` are supported as color kind."
+  @typedoc """
+  The display color of the pixel in the pixelation graph
+
+  `shibafu` (green), `momiji` (red), `sora` (blue), `ichou` (yellow), `ajisai` (purple) and `kuro` (black) are supported as color kind.
+  """
   @type color :: String.t()
 
   @typedoc "The date on which the quantity is to be recorded. It is specified in yyyyMMdd format."
@@ -135,16 +153,18 @@ defmodule PixelaEx do
 
   @doc """
   Create a new pixelation graph definition.
+
+  See also [Create a graph](https://docs.pixe.la/#/post-graph)
   """
   @spec create_graph(
-          PixelaEx.username(),
-          PixelaEx.token(),
-          PixelaEx.graph_id(),
-          PixelaEx.name(),
-          PixelaEx.unit(),
-          PixelaEx.quantity_type(),
-          PixelaEx.color()
-        ) :: PixelaEx.http_result()
+          username(),
+          token(),
+          graph_id(),
+          name(),
+          unit(),
+          quantity_type(),
+          color()
+        ) :: http_result()
   def create_graph(username, token, id, name, unit, type, color) do
     result =
       GraphFunctions.create_graph(username, token, id, name, unit, type, color)
