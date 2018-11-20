@@ -117,8 +117,10 @@ defmodule PixelaEx do
 
   @doc """
   Deletes the specified registered user.
+
+  See also [Delete a User](https://docs.pixe.la/#/delete-user)
   """
-  @spec delete_user(PixelaEx.username(), PixelaEx.token()) :: PixelaEx.http_result()
+  @spec delete_user(username(), token()) :: http_result()
   def delete_user(username, token) do
     result =
       UserFunctions.delete_user(username, token)
