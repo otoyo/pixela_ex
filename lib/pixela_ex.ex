@@ -95,7 +95,11 @@ defmodule PixelaEx do
   """
   @type mode :: String.t()
 
-  @typedoc "The quantity to be registered on the specified date."
+  @typedoc """
+  Specify the quantity to be registered on the specified date
+
+  Validation rule: int^-?[0-9]+ float^-?[0-9]+.[0-9]+
+  """
   @type quantity :: String.t()
 
   @typedoc "The hash string specifying the webhook"
@@ -242,10 +246,11 @@ defmodule PixelaEx do
   #
 
   @doc """
-  It records the quantity of the specified date as a "Pixel".
+  It records the quantity of the specified date as a “Pixel”.
+
+  See also [Post a Pixel](https://docs.pixe.la/#/post-pixel)
   """
-  @spec create_pixel(PixelaEx.username(), PixelaEx.token(), PixelaEx.graph_id(), PixelaEx.date(), PixelaEx.quantity()) ::
-          PixelaEx.http_result()
+  @spec create_pixel(username(), token(), graph_id(), date(), quantity()) :: http_result()
   def create_pixel(username, token, graph_id, date, quantity) do
     result =
       PixelFunctions.create_pixel(username, token, graph_id, date, quantity)
