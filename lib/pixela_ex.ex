@@ -289,9 +289,14 @@ defmodule PixelaEx do
   end
 
   @doc """
+  Increment quantity “Pixel” of the day
+  (it is used “timezone” setting if Graph’s “timezone” is specified, if not specified, calculates it in “UTC”).
+  If the graph type is int then 1 added, and for float then 0.01 added.
   Increment quantity "Pixel" of the day (UTC).
+
+  See also [Increment a Pixel](https://docs.pixe.la/#/increment-pixel)
   """
-  @spec increment_pixel(PixelaEx.username(), PixelaEx.token(), PixelaEx.graph_id()) :: PixelaEx.http_result()
+  @spec increment_pixel(username(), token(), graph_id()) :: http_result()
   def increment_pixel(username, token, graph_id) do
     result =
       PixelFunctions.increment_pixel(username, token, graph_id)
