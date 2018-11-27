@@ -274,10 +274,12 @@ defmodule PixelaEx do
   end
 
   @doc """
-  Update the quantity already registered as a "Pixel".
+  Update the quantity already registered as a “Pixel”.
+  If target “Pixel” not exist, create a new “Pixel” and set quantity.
+
+  See also [Update a Pixel](https://docs.pixe.la/#/put-pixel)
   """
-  @spec update_pixel(PixelaEx.username(), PixelaEx.token(), PixelaEx.graph_id(), PixelaEx.date(), PixelaEx.quantity()) ::
-          PixelaEx.http_result()
+  @spec update_pixel(username(), token(), graph_id(), date(), quantity()) :: http_result()
   def update_pixel(username, token, graph_id, date, param) do
     result =
       PixelFunctions.update_pixel(username, token, graph_id, date, param)
