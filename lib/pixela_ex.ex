@@ -322,10 +322,11 @@ defmodule PixelaEx do
   end
 
   @doc """
-  Delete the registered "Pixel".
+  Delete the registered “Pixel”.
+
+  See also [Delete a Pixel](https://docs.pixe.la/#/delete-pixel)
   """
-  @spec delete_pixel(PixelaEx.username(), PixelaEx.token(), PixelaEx.graph_id(), PixelaEx.date()) ::
-          PixelaEx.http_result()
+  @spec delete_pixel(username(), token(), graph_id(), date()) :: http_result()
   def delete_pixel(username, token, graph_id, date) do
     result =
       PixelFunctions.delete_pixel(username, token, graph_id, date)
