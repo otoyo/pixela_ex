@@ -361,8 +361,10 @@ defmodule PixelaEx do
 
   @doc """
   Get all predefined webhooks definitions.
+
+  See also [Get webhooks](https://docs.pixe.la/#/get-webhook)
   """
-  @spec get_webhooks(PixelaEx.username(), PixelaEx.token()) :: PixelaEx.http_result()
+  @spec get_webhooks(username(), token()) :: http_result()
   def get_webhooks(username, token) do
     result =
       WebhookFunctions.get_webhooks(username, token)
