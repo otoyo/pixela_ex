@@ -71,7 +71,11 @@ defmodule PixelaEx do
   """
   @type quantity_type :: String.t()
 
-  @typedoc "The behavior when the Webhook is invoked. Only `increment` or `decrement` are supported."
+  @typedoc """
+  The behavior when this Webhook is invoked
+
+  Only `increment` or `decrement` are supported.
+  """
   @type countup_type :: String.t()
 
   @typedoc """
@@ -102,7 +106,9 @@ defmodule PixelaEx do
   """
   @type quantity :: String.t()
 
-  @typedoc "The hash string specifying the webhook"
+  @typedoc """
+  The hash string specifying the webhook
+  """
   @type webhook_hash :: String.t()
 
   @typedoc """
@@ -341,9 +347,10 @@ defmodule PixelaEx do
 
   @doc """
   Create a new Webhook.
+
+  See also [Create a Webhook](https://docs.pixe.la/#/post-webhook)
   """
-  @spec create_webhook(PixelaEx.username(), PixelaEx.token(), PixelaEx.graph_id(), PixelaEx.countup_type()) ::
-          PixelaEx.http_result()
+  @spec create_webhook(username(), token(), graph_id(), countup_type()) :: http_result()
   def create_webhook(username, token, graph_id, type) do
     result =
       WebhookFunctions.create_webhook(username, token, graph_id, type)
