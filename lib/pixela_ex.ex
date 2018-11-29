@@ -306,9 +306,13 @@ defmodule PixelaEx do
   end
 
   @doc """
-  Decrement quantity "Pixel" of the day (UTC).
+  Decrement quantity “Pixel” of the day
+  (it is used “timezone” setting if Graph’s “timezone” is specified, if not specified, calculates it in “UTC”).
+  If the graph type is int then -1 added, and for float then -0.01 added.
+
+  See also [Decrement a Pixel](https://docs.pixe.la/#/decrement-pixel)
   """
-  @spec decrement_pixel(PixelaEx.username(), PixelaEx.token(), PixelaEx.graph_id()) :: PixelaEx.http_result()
+  @spec decrement_pixel(username(), token(), graph_id()) :: http_result()
   def decrement_pixel(username, token, graph_id) do
     result =
       PixelFunctions.decrement_pixel(username, token, graph_id)
