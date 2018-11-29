@@ -391,8 +391,10 @@ defmodule PixelaEx do
 
   @doc """
   Delete the registered Webhook.
+
+  See also [Delete a webhook](https://docs.pixe.la/#/invoke-webhook)
   """
-  @spec delete_webhook(PixelaEx.username(), PixelaEx.token(), PixelaEx.webhook_hash()) :: PixelaEx.http_result()
+  @spec delete_webhook(username(), token(), webhook_hash()) :: http_result()
   def delete_webhook(username, token, webhook_hash) do
     result =
       WebhookFunctions.delete_webhook(username, token, webhook_hash)
