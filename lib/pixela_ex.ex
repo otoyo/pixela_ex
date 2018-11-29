@@ -375,8 +375,12 @@ defmodule PixelaEx do
 
   @doc """
   Invoke the webhook registered in advance.
+  It is used “timezone” setting as post date if Graph’s “timezone” is specified,
+  if not specified, calculates it in “UTC”.
+
+  See also [Invoke webhooks](https://docs.pixe.la/#/invoke-webhook)
   """
-  @spec invoke_webhook(PixelaEx.username(), PixelaEx.webhook_hash()) :: PixelaEx.http_result()
+  @spec invoke_webhook(username(), webhook_hash()) :: http_result()
   def invoke_webhook(username, webhook_hash) do
     result =
       WebhookFunctions.invoke_webhook(username, webhook_hash)
